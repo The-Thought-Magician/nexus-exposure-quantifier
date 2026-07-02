@@ -208,6 +208,13 @@ app.get('/health', (c) => c.json({ ok: true }))
 // immediately, THEN run migrate() and seedIfEmpty() (both idempotent).
 // ---------------------------------------------------------------------------
 
+process.on('unhandledRejection', (reason) => {
+  console.error('Unhandled rejection (process kept alive):', reason)
+})
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught exception (process kept alive):', err)
+})
+
 const port = parseInt(process.env.PORT ?? '3001')
 serve({ fetch: app.fetch, port }, () => console.log(`Server running on port ${port}`))
 
