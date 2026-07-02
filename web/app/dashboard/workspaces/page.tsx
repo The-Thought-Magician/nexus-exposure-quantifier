@@ -203,8 +203,8 @@ export default function WorkspacesPage() {
     <div className="space-y-6">
       <header className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100">Workspaces</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <h1 className="text-2xl font-bold text-stone-100">Workspaces</h1>
+          <p className="mt-1 text-sm text-stone-500">
             Organize engagements by legal entity and manage who can access them.
           </p>
         </div>
@@ -220,9 +220,9 @@ export default function WorkspacesPage() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search workspaces..."
-          className="w-full max-w-xs rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+          className="w-full max-w-xs rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
         />
-        <span className="text-xs text-slate-500">
+        <span className="text-xs text-stone-500">
           {filtered.length} of {workspaces.length}
         </span>
       </div>
@@ -252,10 +252,10 @@ export default function WorkspacesPage() {
               <TBody>
                 {filtered.map((w) => (
                   <TR key={w.id}>
-                    <TD className="font-medium text-slate-100">{w.name}</TD>
-                    <TD className="text-slate-400">{w.legal_name || '—'}</TD>
-                    <TD className="text-slate-400">{w.fiscal_year_end || '—'}</TD>
-                    <TD className="text-slate-500">
+                    <TD className="font-medium text-stone-100">{w.name}</TD>
+                    <TD className="text-stone-400">{w.legal_name || '—'}</TD>
+                    <TD className="text-stone-400">{w.fiscal_year_end || '—'}</TD>
+                    <TD className="text-stone-500">
                       {w.created_at ? new Date(w.created_at).toLocaleDateString() : '—'}
                     </TD>
                     <TD>
@@ -284,10 +284,10 @@ export default function WorkspacesPage() {
         <Card>
           <CardHeader className="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <h2 className="text-base font-semibold text-slate-100">
+              <h2 className="text-base font-semibold text-stone-100">
                 Members · {membersFor.name}
               </h2>
-              <p className="text-xs text-slate-500">Add members by user ID and assign a role.</p>
+              <p className="text-xs text-stone-500">Add members by user ID and assign a role.</p>
             </div>
             <Button size="sm" variant="ghost" onClick={() => setMembersFor(null)}>
               Close
@@ -296,20 +296,20 @@ export default function WorkspacesPage() {
           <CardBody className="space-y-4">
             <form onSubmit={addMember} className="flex flex-wrap items-end gap-2">
               <div className="min-w-[16rem] flex-1">
-                <label className="mb-1 block text-xs font-medium text-slate-400">User ID</label>
+                <label className="mb-1 block text-xs font-medium text-stone-400">User ID</label>
                 <input
                   value={newMember.user_id}
                   onChange={(e) => setNewMember((m) => ({ ...m, user_id: e.target.value }))}
                   placeholder="user_..."
-                  className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+                  className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
                 />
               </div>
               <div>
-                <label className="mb-1 block text-xs font-medium text-slate-400">Role</label>
+                <label className="mb-1 block text-xs font-medium text-stone-400">Role</label>
                 <select
                   value={newMember.role}
                   onChange={(e) => setNewMember((m) => ({ ...m, role: e.target.value }))}
-                  className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+                  className="rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
                 >
                   <option value="member">Member</option>
                   <option value="admin">Admin</option>
@@ -346,11 +346,11 @@ export default function WorkspacesPage() {
                     const isOwner = (m.role || '').toLowerCase() === 'owner'
                     return (
                       <TR key={m.id}>
-                        <TD className="font-mono text-xs text-slate-200">{m.user_id}</TD>
+                        <TD className="font-mono text-xs text-stone-200">{m.user_id}</TD>
                         <TD>
                           <Badge tone={roleTone(m.role)}>{m.role || 'member'}</Badge>
                         </TD>
-                        <TD className="text-slate-500">
+                        <TD className="text-stone-500">
                           {m.created_at ? new Date(m.created_at).toLocaleDateString() : '—'}
                         </TD>
                         <TD>
@@ -399,30 +399,30 @@ export default function WorkspacesPage() {
             </div>
           ) : null}
           <div>
-            <label className="mb-1 block text-sm font-medium text-slate-300">Name</label>
+            <label className="mb-1 block text-sm font-medium text-stone-300">Name</label>
             <input
               value={form.name}
               onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-violet-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white focus:border-blue-500 focus:outline-none"
               placeholder="Acme Holdings"
               autoFocus
             />
           </div>
           <div>
-            <label className="mb-1 block text-sm font-medium text-slate-300">Legal name</label>
+            <label className="mb-1 block text-sm font-medium text-stone-300">Legal name</label>
             <input
               value={form.legal_name}
               onChange={(e) => setForm((f) => ({ ...f, legal_name: e.target.value }))}
-              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-violet-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white focus:border-blue-500 focus:outline-none"
               placeholder="Acme Holdings, Inc."
             />
           </div>
           <div>
-            <label className="mb-1 block text-sm font-medium text-slate-300">Fiscal year end</label>
+            <label className="mb-1 block text-sm font-medium text-stone-300">Fiscal year end</label>
             <input
               value={form.fiscal_year_end}
               onChange={(e) => setForm((f) => ({ ...f, fiscal_year_end: e.target.value }))}
-              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-violet-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white focus:border-blue-500 focus:outline-none"
               placeholder="12-31"
             />
           </div>
@@ -445,8 +445,8 @@ export default function WorkspacesPage() {
           </>
         }
       >
-        <p className="text-sm text-slate-300">
-          Delete <span className="font-semibold text-slate-100">{deleteTarget?.name}</span>? Engagements and
+        <p className="text-sm text-stone-300">
+          Delete <span className="font-semibold text-stone-100">{deleteTarget?.name}</span>? Engagements and
           members tied to this workspace may be affected. This cannot be undone.
         </p>
       </Modal>

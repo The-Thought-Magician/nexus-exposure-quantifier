@@ -88,7 +88,7 @@ function kindMeta(kind: string): { label: string; tone: 'violet' | 'green' | 'am
 
 function SubNav({ id, active }: { id: string; active: string }) {
   return (
-    <div className="mb-6 flex flex-wrap gap-1 rounded-xl border border-slate-800 bg-slate-900/60 p-1">
+    <div className="mb-6 flex flex-wrap gap-1 rounded-xl border border-stone-800 bg-stone-900/60 p-1">
       {SUB_NAV.map((t) => {
         const href = t.slug ? `/dashboard/engagements/${id}/${t.slug}` : `/dashboard/engagements/${id}`
         const isActive = t.slug === active
@@ -97,7 +97,7 @@ function SubNav({ id, active }: { id: string; active: string }) {
             key={t.slug || 'summary'}
             href={href}
             className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
-              isActive ? 'bg-violet-600 text-white' : 'text-slate-400 hover:bg-slate-800 hover:text-slate-100'
+              isActive ? 'bg-blue-600 text-white' : 'text-stone-400 hover:bg-stone-800 hover:text-stone-100'
             }`}
           >
             {t.label}
@@ -182,25 +182,25 @@ export default function ScenariosPage() {
         <div>
           <Link
             href={`/dashboard/engagements/${id}`}
-            className="text-xs text-slate-500 transition-colors hover:text-violet-300"
+            className="text-xs text-stone-500 transition-colors hover:text-blue-300"
           >
             ← Engagement
           </Link>
-          <h1 className="mt-1 text-2xl font-bold text-slate-100">Scenario Comparison</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <h1 className="mt-1 text-2xl font-bold text-stone-100">Scenario Comparison</h1>
+          <p className="mt-1 text-sm text-stone-500">
             Register now vs. voluntary disclosure vs. wait — modeled total exposure and recommendation.
           </p>
         </div>
         <div className="flex items-end gap-2">
           <div>
-            <label className="mb-1 block text-xs font-medium text-slate-400">Wait horizon (months)</label>
+            <label className="mb-1 block text-xs font-medium text-stone-400">Wait horizon (months)</label>
             <input
               type="number"
               min={1}
               max={120}
               value={waitMonths}
               onChange={(e) => setWaitMonths(Math.max(1, Math.min(120, Number(e.target.value) || 1)))}
-              className="w-32 rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-violet-500 focus:outline-none"
+              className="w-32 rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white focus:border-blue-500 focus:outline-none"
             />
           </div>
           <Button onClick={recompute} disabled={computing}>
@@ -237,12 +237,12 @@ export default function ScenariosPage() {
                   <div>
                     <div className="flex items-center gap-2">
                       <Badge tone="green">Recommended path</Badge>
-                      <span className="text-sm font-semibold text-slate-100">{kindMeta(recommended.kind).label}</span>
+                      <span className="text-sm font-semibold text-stone-100">{kindMeta(recommended.kind).label}</span>
                     </div>
-                    <p className="mt-2 max-w-2xl text-sm text-slate-400">{kindMeta(recommended.kind).blurb}</p>
+                    <p className="mt-2 max-w-2xl text-sm text-stone-400">{kindMeta(recommended.kind).blurb}</p>
                   </div>
                   <div className="text-right">
-                    <div className="text-xs uppercase tracking-wide text-slate-500">Modeled total</div>
+                    <div className="text-xs uppercase tracking-wide text-stone-500">Modeled total</div>
                     <div className="text-3xl font-bold text-emerald-300">{money(recommended.total)}</div>
                     {best && worst && recommended.id === best.id && spread > 0 && (
                       <div className="mt-1 text-xs text-emerald-400">
@@ -264,7 +264,7 @@ export default function ScenariosPage() {
           {/* Comparison bars */}
           <Card>
             <CardHeader>
-              <h2 className="text-sm font-semibold text-slate-200">Total exposure by path</h2>
+              <h2 className="text-sm font-semibold text-stone-200">Total exposure by path</h2>
             </CardHeader>
             <CardBody className="space-y-4">
               {ordered.map((s) => {
@@ -277,20 +277,20 @@ export default function ScenariosPage() {
                     ? 'bg-amber-500'
                     : meta.tone === 'blue'
                     ? 'bg-sky-500'
-                    : 'bg-violet-500'
+                    : 'bg-blue-500'
                 return (
                   <div key={s.id}>
                     <div className="mb-1 flex items-center justify-between text-sm">
-                      <span className="flex items-center gap-2 font-medium text-slate-200">
+                      <span className="flex items-center gap-2 font-medium text-stone-200">
                         {meta.label}
                         {s.kind.toLowerCase().includes('wait') && s.wait_months ? (
                           <Badge tone="slate">{s.wait_months} mo</Badge>
                         ) : null}
                         {s.is_recommended ? <Badge tone="green">Recommended</Badge> : null}
                       </span>
-                      <span className="tabular-nums text-slate-300">{money(s.total)}</span>
+                      <span className="tabular-nums text-stone-300">{money(s.total)}</span>
                     </div>
-                    <div className="h-3 w-full overflow-hidden rounded-full bg-slate-800">
+                    <div className="h-3 w-full overflow-hidden rounded-full bg-stone-800">
                       <div className={`h-full rounded-full ${barColor}`} style={{ width: `${Math.max(2, pct)}%` }} />
                     </div>
                   </div>
@@ -302,7 +302,7 @@ export default function ScenariosPage() {
           {/* Detail comparison table */}
           <Card>
             <CardHeader>
-              <h2 className="text-sm font-semibold text-slate-200">Component breakdown</h2>
+              <h2 className="text-sm font-semibold text-stone-200">Component breakdown</h2>
             </CardHeader>
             <Table>
               <THead>
@@ -327,14 +327,14 @@ export default function ScenariosPage() {
                           <div className="flex items-center gap-2">
                             <Badge tone={meta.tone}>{meta.label}</Badge>
                             {s.kind.toLowerCase().includes('wait') && s.wait_months ? (
-                              <span className="text-xs text-slate-500">{s.wait_months} mo</span>
+                              <span className="text-xs text-stone-500">{s.wait_months} mo</span>
                             ) : null}
                           </div>
                         </TD>
                         <TD className="text-right tabular-nums">{money(s.total_tax)}</TD>
                         <TD className="text-right tabular-nums">{money(s.total_penalty)}</TD>
                         <TD className="text-right tabular-nums">{money(s.total_interest)}</TD>
-                        <TD className="text-right font-semibold tabular-nums text-slate-100">{money(s.total)}</TD>
+                        <TD className="text-right font-semibold tabular-nums text-stone-100">{money(s.total)}</TD>
                         <TD className="text-right">
                           {perState.length > 0 ? (
                             <Button
@@ -345,35 +345,35 @@ export default function ScenariosPage() {
                               {open ? 'Hide states' : `${perState.length} states`}
                             </Button>
                           ) : (
-                            <span className="text-xs text-slate-600">—</span>
+                            <span className="text-xs text-stone-600">—</span>
                           )}
                         </TD>
                       </TR>
                       {open && perState.length > 0 && (
-                        <tr className="bg-slate-950/40">
+                        <tr className="bg-stone-950/40">
                           <td colSpan={6} className="px-4 py-3">
-                            <div className="overflow-x-auto rounded-lg border border-slate-800">
+                            <div className="overflow-x-auto rounded-lg border border-stone-800">
                               <table className="w-full text-xs">
-                                <thead className="bg-slate-900/80">
+                                <thead className="bg-stone-900/80">
                                   <tr>
-                                    <th className="px-3 py-2 text-left font-semibold uppercase tracking-wide text-slate-500">State</th>
-                                    <th className="px-3 py-2 text-right font-semibold uppercase tracking-wide text-slate-500">Tax</th>
-                                    <th className="px-3 py-2 text-right font-semibold uppercase tracking-wide text-slate-500">Penalty</th>
-                                    <th className="px-3 py-2 text-right font-semibold uppercase tracking-wide text-slate-500">Interest</th>
-                                    <th className="px-3 py-2 text-right font-semibold uppercase tracking-wide text-slate-500">Total</th>
+                                    <th className="px-3 py-2 text-left font-semibold uppercase tracking-wide text-stone-500">State</th>
+                                    <th className="px-3 py-2 text-right font-semibold uppercase tracking-wide text-stone-500">Tax</th>
+                                    <th className="px-3 py-2 text-right font-semibold uppercase tracking-wide text-stone-500">Penalty</th>
+                                    <th className="px-3 py-2 text-right font-semibold uppercase tracking-wide text-stone-500">Interest</th>
+                                    <th className="px-3 py-2 text-right font-semibold uppercase tracking-wide text-stone-500">Total</th>
                                   </tr>
                                 </thead>
-                                <tbody className="divide-y divide-slate-800">
+                                <tbody className="divide-y divide-stone-800">
                                   {perState
                                     .slice()
                                     .sort((a, b) => num(b.total) - num(a.total))
                                     .map((ps) => (
                                       <tr key={ps.state}>
-                                        <td className="px-3 py-2 font-medium text-slate-200">{ps.state}</td>
-                                        <td className="px-3 py-2 text-right tabular-nums text-slate-300">{money(ps.tax)}</td>
-                                        <td className="px-3 py-2 text-right tabular-nums text-slate-300">{money(ps.penalty)}</td>
-                                        <td className="px-3 py-2 text-right tabular-nums text-slate-300">{money(ps.interest)}</td>
-                                        <td className="px-3 py-2 text-right tabular-nums font-semibold text-slate-100">{money(ps.total)}</td>
+                                        <td className="px-3 py-2 font-medium text-stone-200">{ps.state}</td>
+                                        <td className="px-3 py-2 text-right tabular-nums text-stone-300">{money(ps.tax)}</td>
+                                        <td className="px-3 py-2 text-right tabular-nums text-stone-300">{money(ps.penalty)}</td>
+                                        <td className="px-3 py-2 text-right tabular-nums text-stone-300">{money(ps.interest)}</td>
+                                        <td className="px-3 py-2 text-right tabular-nums font-semibold text-stone-100">{money(ps.total)}</td>
                                       </tr>
                                     ))}
                                 </tbody>

@@ -220,13 +220,13 @@ export default function SalesPage() {
   return (
     <div className="space-y-6">
       <div>
-        <Link href={`/dashboard/engagements/${id}`} className="text-sm text-slate-500 hover:text-slate-300">
+        <Link href={`/dashboard/engagements/${id}`} className="text-sm text-stone-500 hover:text-stone-300">
           ← Engagement
         </Link>
         <div className="mt-2 flex flex-wrap items-start justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-semibold text-slate-100">Sales lines</h1>
-            <p className="mt-1 text-sm text-slate-500">
+            <h1 className="text-2xl font-semibold text-stone-100">Sales lines</h1>
+            <p className="mt-1 text-sm text-stone-500">
               Transaction detail feeding nexus crossings and exposure. Add lines manually or import them, then recompute.
             </p>
           </div>
@@ -264,17 +264,17 @@ export default function SalesPage() {
           <div className="grid gap-6 lg:grid-cols-3">
             <Card className="lg:col-span-2">
               <CardHeader className="flex flex-wrap items-center gap-3">
-                <h2 className="mr-auto text-sm font-semibold text-slate-200">Lines</h2>
+                <h2 className="mr-auto text-sm font-semibold text-stone-200">Lines</h2>
                 <input
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search ref / jurisdiction…"
-                  className="min-w-[10rem] rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-violet-500 focus:outline-none"
+                  className="min-w-[10rem] rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-blue-500 focus:outline-none"
                 />
                 <select
                   value={stateFilter}
                   onChange={(e) => setStateFilter(e.target.value)}
-                  className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+                  className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
                 >
                   <option value="all">All states</option>
                   {states.map((s) => (
@@ -332,9 +332,9 @@ export default function SalesPage() {
                     <TBody>
                       {filtered.map((l) => (
                         <TR key={l.id}>
-                          <TD className="whitespace-nowrap text-slate-400">{fmtDate(l.sale_date)}</TD>
+                          <TD className="whitespace-nowrap text-stone-400">{fmtDate(l.sale_date)}</TD>
                           <TD className="font-medium">{l.state}</TD>
-                          <TD className="text-slate-400">{l.jurisdiction || '—'}</TD>
+                          <TD className="text-stone-400">{l.jurisdiction || '—'}</TD>
                           <TD className="text-right font-medium">{money(l.amount)}</TD>
                           <TD>
                             <div className="flex flex-wrap gap-1">
@@ -342,9 +342,9 @@ export default function SalesPage() {
                               {l.is_marketplace ? <Badge tone="amber">mkt</Badge> : null}
                             </div>
                           </TD>
-                          <TD className="text-xs text-slate-500">
+                          <TD className="text-xs text-stone-500">
                             {l.transaction_ref || '—'}
-                            {l.product_category ? <div className="text-slate-600">{l.product_category}</div> : null}
+                            {l.product_category ? <div className="text-stone-600">{l.product_category}</div> : null}
                           </TD>
                           <TD>
                             <div className="flex justify-end">
@@ -363,11 +363,11 @@ export default function SalesPage() {
 
             <Card>
               <CardHeader>
-                <h2 className="text-sm font-semibold text-slate-200">Per-state summary</h2>
+                <h2 className="text-sm font-semibold text-stone-200">Per-state summary</h2>
               </CardHeader>
               <CardBody>
                 {summary.length === 0 ? (
-                  <p className="text-sm text-slate-500">No summary data yet.</p>
+                  <p className="text-sm text-stone-500">No summary data yet.</p>
                 ) : (
                   <div className="space-y-3">
                     {summary
@@ -382,18 +382,18 @@ export default function SalesPage() {
                             onClick={() => setStateFilter((cur) => (cur === s.state ? 'all' : s.state))}
                             className={`w-full rounded-lg border px-3 py-2 text-left transition-colors ${
                               stateFilter === s.state
-                                ? 'border-violet-500/50 bg-violet-500/10'
-                                : 'border-slate-800 bg-slate-950/40 hover:border-slate-700'
+                                ? 'border-blue-500/50 bg-blue-500/10'
+                                : 'border-stone-800 bg-stone-950/40 hover:border-stone-700'
                             }`}
                           >
                             <div className="flex items-center justify-between text-sm">
-                              <span className="font-medium text-slate-200">{s.state}</span>
-                              <span className="text-slate-300">{money(amt)}</span>
+                              <span className="font-medium text-stone-200">{s.state}</span>
+                              <span className="text-stone-300">{money(amt)}</span>
                             </div>
-                            <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-slate-800">
-                              <div className="h-full bg-violet-500" style={{ width: `${(amt / maxSummary) * 100}%` }} />
+                            <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-stone-800">
+                              <div className="h-full bg-blue-500" style={{ width: `${(amt / maxSummary) * 100}%` }} />
                             </div>
-                            {cnt > 0 ? <div className="mt-1 text-xs text-slate-500">{cnt} transactions</div> : null}
+                            {cnt > 0 ? <div className="mt-1 text-xs text-stone-500">{cnt} transactions</div> : null}
                           </button>
                         )
                       })}
@@ -426,11 +426,11 @@ export default function SalesPage() {
           ) : null}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">State</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">State</label>
               <select
                 value={form.state}
                 onChange={(e) => setForm((f) => ({ ...f, state: e.target.value }))}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
               >
                 {US_STATES.map((s) => (
                   <option key={s} value={s}>
@@ -440,85 +440,85 @@ export default function SalesPage() {
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Amount (USD)</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Amount (USD)</label>
               <input
                 type="number"
                 step="0.01"
                 value={form.amount}
                 onChange={(e) => setForm((f) => ({ ...f, amount: e.target.value }))}
                 placeholder="0.00"
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-violet-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-blue-500 focus:outline-none"
               />
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Sale date</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Sale date</label>
               <input
                 type="date"
                 value={form.sale_date}
                 onChange={(e) => setForm((f) => ({ ...f, sale_date: e.target.value }))}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Jurisdiction</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Jurisdiction</label>
               <input
                 value={form.jurisdiction}
                 onChange={(e) => setForm((f) => ({ ...f, jurisdiction: e.target.value }))}
                 placeholder="e.g. Los Angeles County"
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-violet-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-blue-500 focus:outline-none"
               />
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Transaction ref</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Transaction ref</label>
               <input
                 value={form.transaction_ref}
                 onChange={(e) => setForm((f) => ({ ...f, transaction_ref: e.target.value }))}
                 placeholder="INV-1001"
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-violet-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-blue-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Product category</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Product category</label>
               <input
                 value={form.product_category}
                 onChange={(e) => setForm((f) => ({ ...f, product_category: e.target.value }))}
                 placeholder="saas / tangible / service"
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-violet-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-blue-500 focus:outline-none"
               />
             </div>
           </div>
           <div className="flex flex-wrap gap-6">
-            <label className="flex items-center gap-2 text-sm text-slate-300">
+            <label className="flex items-center gap-2 text-sm text-stone-300">
               <input
                 type="checkbox"
                 checked={form.is_taxable}
                 onChange={(e) => setForm((f) => ({ ...f, is_taxable: e.target.checked }))}
-                className="h-4 w-4 rounded border-slate-600 bg-slate-950 text-violet-500 focus:ring-violet-500"
+                className="h-4 w-4 rounded border-stone-600 bg-stone-950 text-blue-500 focus:ring-blue-500"
               />
               Taxable
             </label>
-            <label className="flex items-center gap-2 text-sm text-slate-300">
+            <label className="flex items-center gap-2 text-sm text-stone-300">
               <input
                 type="checkbox"
                 checked={form.is_marketplace}
                 onChange={(e) => setForm((f) => ({ ...f, is_marketplace: e.target.checked }))}
-                className="h-4 w-4 rounded border-slate-600 bg-slate-950 text-violet-500 focus:ring-violet-500"
+                className="h-4 w-4 rounded border-stone-600 bg-stone-950 text-blue-500 focus:ring-blue-500"
               />
               Marketplace-facilitated
             </label>
           </div>
           {!form.is_taxable ? (
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Exempt reason</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Exempt reason</label>
               <input
                 value={form.exempt_reason}
                 onChange={(e) => setForm((f) => ({ ...f, exempt_reason: e.target.value }))}
                 placeholder="resale / nontaxable service / …"
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-violet-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-blue-500 focus:outline-none"
               />
             </div>
           ) : null}

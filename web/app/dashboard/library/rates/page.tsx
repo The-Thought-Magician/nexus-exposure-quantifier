@@ -193,8 +193,8 @@ export default function RatesLibraryPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold text-slate-100">Rates &amp; VDA reference</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <h1 className="text-2xl font-semibold text-stone-100">Rates &amp; VDA reference</h1>
+          <p className="mt-1 text-sm text-stone-500">
             The tax, penalty, interest and voluntary-disclosure-agreement data used to quantify exposure. Read-only
             reference shared across every engagement.
           </p>
@@ -227,20 +227,20 @@ export default function RatesLibraryPage() {
           {topRates.rows.length > 0 ? (
             <Card>
               <CardHeader>
-                <h2 className="text-sm font-semibold text-slate-200">Highest combined tax rates</h2>
+                <h2 className="text-sm font-semibold text-stone-200">Highest combined tax rates</h2>
               </CardHeader>
               <CardBody>
                 <div className="space-y-2.5">
                   {topRates.rows.map((r) => (
                     <div key={r.state} className="flex items-center gap-3">
-                      <div className="w-10 shrink-0 text-xs font-semibold text-slate-300">{r.state}</div>
-                      <div className="h-4 flex-1 overflow-hidden rounded bg-slate-800">
+                      <div className="w-10 shrink-0 text-xs font-semibold text-stone-300">{r.state}</div>
+                      <div className="h-4 flex-1 overflow-hidden rounded bg-stone-800">
                         <div
-                          className="h-full rounded bg-gradient-to-r from-violet-600 to-fuchsia-400"
+                          className="h-full rounded bg-gradient-to-r from-blue-600 to-fuchsia-400"
                           style={{ width: `${(r.rate / topRates.max) * 100}%` }}
                         />
                       </div>
-                      <div className="w-14 shrink-0 text-right text-xs tabular-nums text-slate-300">{pct(r.rate)}</div>
+                      <div className="w-14 shrink-0 text-right text-xs tabular-nums text-stone-300">{pct(r.rate)}</div>
                     </div>
                   ))}
                 </div>
@@ -257,8 +257,8 @@ export default function RatesLibraryPage() {
                     onClick={() => setTab(t.id)}
                     className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
                       tab === t.id
-                        ? 'bg-violet-600 text-white'
-                        : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-stone-800 text-stone-300 hover:bg-stone-700'
                     }`}
                   >
                     {t.label}
@@ -269,7 +269,7 @@ export default function RatesLibraryPage() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search state or notes…"
-                className="min-w-[10rem] flex-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-violet-500 focus:outline-none"
+                className="min-w-[10rem] flex-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-blue-500 focus:outline-none"
               />
               <Badge tone="slate">
                 {activeCount} of {totalForTab}
@@ -313,12 +313,12 @@ export default function RatesLibraryPage() {
                   <TBody>
                     {fTax.map((r) => (
                       <TR key={r.id}>
-                        <TD className="font-semibold text-slate-100">{r.state}</TD>
-                        <TD className="text-right text-slate-300">{pct(r.base_rate)}</TD>
-                        <TD className="text-right font-medium text-violet-300">{pct(r.avg_combined_rate)}</TD>
-                        <TD className="text-slate-400">{r.filing_frequency || '—'}</TD>
-                        <TD className="text-slate-400">{fmtDate(r.effective_date)}</TD>
-                        <TD className="max-w-[16rem] truncate text-slate-500" title={r.notes || ''}>
+                        <TD className="font-semibold text-stone-100">{r.state}</TD>
+                        <TD className="text-right text-stone-300">{pct(r.base_rate)}</TD>
+                        <TD className="text-right font-medium text-blue-300">{pct(r.avg_combined_rate)}</TD>
+                        <TD className="text-stone-400">{r.filing_frequency || '—'}</TD>
+                        <TD className="text-stone-400">{fmtDate(r.effective_date)}</TD>
+                        <TD className="max-w-[16rem] truncate text-stone-500" title={r.notes || ''}>
                           {r.notes || '—'}
                         </TD>
                       </TR>
@@ -341,13 +341,13 @@ export default function RatesLibraryPage() {
                   <TBody>
                     {fPenalty.map((r) => (
                       <TR key={r.id}>
-                        <TD className="font-semibold text-slate-100">{r.state}</TD>
+                        <TD className="font-semibold text-stone-100">{r.state}</TD>
                         <TD className="text-right text-amber-300">{pct(r.failure_to_file_rate)}</TD>
                         <TD className="text-right text-amber-300">{pct(r.failure_to_pay_rate)}</TD>
-                        <TD className="text-right text-slate-300">{pct(r.penalty_cap_rate)}</TD>
-                        <TD className="text-right text-slate-300">{money(r.min_penalty)}</TD>
-                        <TD className="text-slate-400">{r.accrual || '—'}</TD>
-                        <TD className="text-slate-400">{fmtDate(r.effective_date)}</TD>
+                        <TD className="text-right text-stone-300">{pct(r.penalty_cap_rate)}</TD>
+                        <TD className="text-right text-stone-300">{money(r.min_penalty)}</TD>
+                        <TD className="text-stone-400">{r.accrual || '—'}</TD>
+                        <TD className="text-stone-400">{fmtDate(r.effective_date)}</TD>
                       </TR>
                     ))}
                   </TBody>
@@ -366,15 +366,15 @@ export default function RatesLibraryPage() {
                   <TBody>
                     {fInterest.map((r) => (
                       <TR key={r.id}>
-                        <TD className="font-semibold text-slate-100">{r.state}</TD>
-                        <TD className="text-right tabular-nums text-slate-300">{r.year ?? '—'}</TD>
-                        <TD className="text-right font-medium text-violet-300">{pct(r.annual_rate)}</TD>
+                        <TD className="font-semibold text-stone-100">{r.state}</TD>
+                        <TD className="text-right tabular-nums text-stone-300">{r.year ?? '—'}</TD>
+                        <TD className="text-right font-medium text-blue-300">{pct(r.annual_rate)}</TD>
                         <TD>
                           <Badge tone={String(r.compounding || '').toLowerCase().includes('daily') ? 'amber' : 'slate'}>
                             {r.compounding || '—'}
                           </Badge>
                         </TD>
-                        <TD className="max-w-[16rem] truncate text-slate-500" title={r.notes || ''}>
+                        <TD className="max-w-[16rem] truncate text-stone-500" title={r.notes || ''}>
                           {r.notes || '—'}
                         </TD>
                       </TR>
@@ -396,8 +396,8 @@ export default function RatesLibraryPage() {
                   <TBody>
                     {fVda.map((r) => (
                       <TR key={r.id}>
-                        <TD className="font-semibold text-slate-100">{r.state}</TD>
-                        <TD className="text-right tabular-nums text-slate-300">
+                        <TD className="font-semibold text-stone-100">{r.state}</TD>
+                        <TD className="text-right tabular-nums text-stone-300">
                           {r.lookback_years !== null && r.lookback_years !== undefined
                             ? `${num(r.lookback_years)} yr`
                             : '—'}
@@ -407,13 +407,13 @@ export default function RatesLibraryPage() {
                             {r.waives_penalties ? 'Waived' : 'Not waived'}
                           </Badge>
                         </TD>
-                        <TD className="text-slate-400">{r.interest_treatment || '—'}</TD>
+                        <TD className="text-stone-400">{r.interest_treatment || '—'}</TD>
                         <TD>
                           <Badge tone={r.requires_no_prior_contact ? 'amber' : 'slate'}>
                             {r.requires_no_prior_contact ? 'Required' : 'Not required'}
                           </Badge>
                         </TD>
-                        <TD className="max-w-[16rem] truncate text-slate-500" title={r.notes || ''}>
+                        <TD className="max-w-[16rem] truncate text-stone-500" title={r.notes || ''}>
                           {r.notes || '—'}
                         </TD>
                       </TR>

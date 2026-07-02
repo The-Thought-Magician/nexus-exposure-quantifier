@@ -78,7 +78,7 @@ function pointLabel(p: TimelinePoint, i: number): string {
 
 function SubNav({ id, active }: { id: string; active: string }) {
   return (
-    <div className="mb-6 flex flex-wrap gap-1 rounded-xl border border-slate-800 bg-slate-900/60 p-1">
+    <div className="mb-6 flex flex-wrap gap-1 rounded-xl border border-stone-800 bg-stone-900/60 p-1">
       {SUB_NAV.map((t) => {
         const href = t.slug ? `/dashboard/engagements/${id}/${t.slug}` : `/dashboard/engagements/${id}`
         const isActive = t.slug === active
@@ -87,7 +87,7 @@ function SubNav({ id, active }: { id: string; active: string }) {
             key={t.slug || 'summary'}
             href={href}
             className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
-              isActive ? 'bg-violet-600 text-white' : 'text-slate-400 hover:bg-slate-800 hover:text-slate-100'
+              isActive ? 'bg-blue-600 text-white' : 'text-stone-400 hover:bg-stone-800 hover:text-stone-100'
             }`}
           >
             {t.label}
@@ -157,9 +157,9 @@ function DualLineChart({ points }: { points: TimelinePoint[] }) {
           </g>
         ))}
       </svg>
-      <div className="mt-2 flex gap-5 pl-14 text-xs text-slate-400">
+      <div className="mt-2 flex gap-5 pl-14 text-xs text-stone-400">
         <span className="flex items-center gap-1.5">
-          <span className="inline-block h-2 w-4 rounded bg-violet-500" /> Total exposure
+          <span className="inline-block h-2 w-4 rounded bg-blue-500" /> Total exposure
         </span>
         <span className="flex items-center gap-1.5">
           <span className="inline-block h-2 w-4 rounded bg-emerald-500" /> VDA savings remaining
@@ -223,24 +223,24 @@ export default function WaitCostPage() {
         <div>
           <Link
             href={`/dashboard/engagements/${id}`}
-            className="text-xs text-slate-500 transition-colors hover:text-violet-300"
+            className="text-xs text-stone-500 transition-colors hover:text-blue-300"
           >
             ← Engagement
           </Link>
-          <h1 className="mt-1 text-2xl font-bold text-slate-100">Cost of Waiting</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <h1 className="mt-1 text-2xl font-bold text-stone-100">Cost of Waiting</h1>
+          <p className="mt-1 text-sm text-stone-500">
             How exposure grows and VDA savings erode over the deferral horizon, plus the decision deadline.
           </p>
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium text-slate-400">Horizon</label>
+          <label className="mb-1 block text-xs font-medium text-stone-400">Horizon</label>
           <div className="flex gap-1">
             {MONTH_OPTIONS.map((m) => (
               <button
                 key={m}
                 onClick={() => setMonths(m)}
                 className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                  months === m ? 'bg-violet-600 text-white' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                  months === m ? 'bg-blue-600 text-white' : 'bg-stone-800 text-stone-300 hover:bg-stone-700'
                 }`}
               >
                 {m}mo
@@ -277,7 +277,7 @@ export default function WaitCostPage() {
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                   <div>
                     <Badge tone="amber">Decision deadline</Badge>
-                    <p className="mt-2 text-lg font-semibold text-slate-100">
+                    <p className="mt-2 text-lg font-semibold text-stone-100">
                       {deadline.date
                         ? new Date(deadline.date).toLocaleDateString('en-US', {
                             month: 'long',
@@ -286,14 +286,14 @@ export default function WaitCostPage() {
                           })
                         : `${deadline.months} months out`}
                     </p>
-                    {deadline.reason && <p className="mt-1 max-w-xl text-sm text-slate-400">{deadline.reason}</p>}
+                    {deadline.reason && <p className="mt-1 max-w-xl text-sm text-stone-400">{deadline.reason}</p>}
                     {deadline.state && (
-                      <p className="mt-1 text-xs text-slate-500">Driven by {deadline.state}</p>
+                      <p className="mt-1 text-xs text-stone-500">Driven by {deadline.state}</p>
                     )}
                   </div>
                   {deadline.vda_savings_at_deadline !== undefined && deadline.vda_savings_at_deadline !== null && (
                     <div className="text-right">
-                      <div className="text-xs uppercase tracking-wide text-slate-500">VDA savings at deadline</div>
+                      <div className="text-xs uppercase tracking-wide text-stone-500">VDA savings at deadline</div>
                       <div className="text-2xl font-bold text-emerald-300">
                         {money(deadline.vda_savings_at_deadline)}
                       </div>
@@ -313,7 +313,7 @@ export default function WaitCostPage() {
 
           <Card>
             <CardHeader>
-              <h2 className="text-sm font-semibold text-slate-200">Exposure growth vs. VDA-savings erosion</h2>
+              <h2 className="text-sm font-semibold text-stone-200">Exposure growth vs. VDA-savings erosion</h2>
             </CardHeader>
             <CardBody>
               <DualLineChart points={timeline} />
@@ -322,7 +322,7 @@ export default function WaitCostPage() {
 
           <Card>
             <CardHeader>
-              <h2 className="text-sm font-semibold text-slate-200">Month-by-month projection</h2>
+              <h2 className="text-sm font-semibold text-stone-200">Month-by-month projection</h2>
             </CardHeader>
             <Table>
               <THead>
@@ -347,11 +347,11 @@ export default function WaitCostPage() {
                       : 0
                   return (
                     <TR key={i}>
-                      <TD className="font-medium text-slate-200">{pointLabel(p, i)}</TD>
-                      <TD className="text-right tabular-nums text-slate-300">{money(p.tax)}</TD>
-                      <TD className="text-right tabular-nums text-slate-300">{money(p.penalty)}</TD>
-                      <TD className="text-right tabular-nums text-slate-300">{money(p.interest)}</TD>
-                      <TD className="text-right font-semibold tabular-nums text-slate-100">{money(p.total)}</TD>
+                      <TD className="font-medium text-stone-200">{pointLabel(p, i)}</TD>
+                      <TD className="text-right tabular-nums text-stone-300">{money(p.tax)}</TD>
+                      <TD className="text-right tabular-nums text-stone-300">{money(p.penalty)}</TD>
+                      <TD className="text-right tabular-nums text-stone-300">{money(p.interest)}</TD>
+                      <TD className="text-right font-semibold tabular-nums text-stone-100">{money(p.total)}</TD>
                       <TD className="text-right tabular-nums text-amber-300">
                         {incremental > 0 ? `+${money(incremental)}` : money(incremental)}
                       </TD>

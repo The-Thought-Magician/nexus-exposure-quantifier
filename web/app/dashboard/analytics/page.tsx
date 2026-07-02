@@ -159,15 +159,15 @@ export default function AnalyticsPage() {
     <div className="space-y-8">
       <header className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100">Analytics</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <h1 className="text-2xl font-bold text-stone-100">Analytics</h1>
+          <p className="mt-1 text-sm text-stone-500">
             Exposure heat ranking, trends, and portfolio KPIs across engagements.
           </p>
         </div>
         <select
           value={selectedEngagement}
           onChange={(e) => onSelect(e.target.value)}
-          className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+          className="rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
         >
           <option value="">All engagements (heat)</option>
           {engagements.map((e) => (
@@ -209,7 +209,7 @@ export default function AnalyticsPage() {
         {/* Heat ranking */}
         <Card>
           <CardHeader className="flex items-center justify-between">
-            <h2 className="text-base font-semibold text-slate-100">Exposure by state (heat ranking)</h2>
+            <h2 className="text-base font-semibold text-stone-100">Exposure by state (heat ranking)</h2>
             {selectedEngagement ? <Badge tone="violet">Scoped</Badge> : <Badge tone="slate">All</Badge>}
           </CardHeader>
           <CardBody className="p-0">
@@ -232,17 +232,17 @@ export default function AnalyticsPage() {
                     <div key={h.state}>
                       <div className="mb-1 flex items-center justify-between text-sm">
                         <div className="flex items-center gap-2">
-                          <span className="font-mono font-semibold text-slate-200">{h.state}</span>
+                          <span className="font-mono font-semibold text-stone-200">{h.state}</span>
                           {h.materiality_band ? (
                             <Badge tone={bandTone(h.materiality_band)}>{h.materiality_band}</Badge>
                           ) : null}
                           {h.has_crossed ? <Badge tone="amber">crossed</Badge> : null}
                         </div>
-                        <span className="font-semibold text-violet-300">{currency(total)}</span>
+                        <span className="font-semibold text-blue-300">{currency(total)}</span>
                       </div>
-                      <div className="h-2 w-full overflow-hidden rounded-full bg-slate-800">
+                      <div className="h-2 w-full overflow-hidden rounded-full bg-stone-800">
                         <div
-                          className="h-full rounded-full bg-gradient-to-r from-violet-600 to-violet-400"
+                          className="h-full rounded-full bg-gradient-to-r from-blue-600 to-blue-400"
                           style={{ width: `${pct}%` }}
                         />
                       </div>
@@ -257,7 +257,7 @@ export default function AnalyticsPage() {
         {/* Trend */}
         <Card>
           <CardHeader>
-            <h2 className="text-base font-semibold text-slate-100">Exposure trend</h2>
+            <h2 className="text-base font-semibold text-stone-100">Exposure trend</h2>
           </CardHeader>
           <CardBody>
             {!selectedEngagement ? (
@@ -282,9 +282,9 @@ export default function AnalyticsPage() {
                     const pct = trendMax > 0 ? Math.max(2, (v / trendMax) * 100) : 0
                     return (
                       <div key={i} className="group flex flex-1 flex-col items-center justify-end">
-                        <div className="mb-1 hidden text-[10px] text-slate-400 group-hover:block">{currency(v)}</div>
+                        <div className="mb-1 hidden text-[10px] text-stone-400 group-hover:block">{currency(v)}</div>
                         <div
-                          className="w-full rounded-t bg-gradient-to-t from-violet-700 to-violet-400 transition-all group-hover:from-violet-600 group-hover:to-violet-300"
+                          className="w-full rounded-t bg-gradient-to-t from-blue-700 to-blue-400 transition-all group-hover:from-blue-600 group-hover:to-blue-300"
                           style={{ height: `${pct}%` }}
                           title={`${trendLabel(p, i)}: ${currency(v)}`}
                         />
@@ -292,7 +292,7 @@ export default function AnalyticsPage() {
                     )
                   })}
                 </div>
-                <div className="mt-2 flex justify-between text-[10px] text-slate-600">
+                <div className="mt-2 flex justify-between text-[10px] text-stone-600">
                   <span>{trendLabel(trend[0], 0)}</span>
                   {trend.length > 1 ? <span>{trendLabel(trend[trend.length - 1], trend.length - 1)}</span> : null}
                 </div>
@@ -305,8 +305,8 @@ export default function AnalyticsPage() {
       {/* Ranked table */}
       <Card>
         <CardHeader className="flex items-center justify-between">
-          <h2 className="text-base font-semibold text-slate-100">State exposure breakdown</h2>
-          <span className="text-xs text-slate-500">{rankedHeat.length} states</span>
+          <h2 className="text-base font-semibold text-stone-100">State exposure breakdown</h2>
+          <span className="text-xs text-stone-500">{rankedHeat.length} states</span>
         </CardHeader>
         <CardBody className="p-0">
           {detailLoading ? (
@@ -331,7 +331,7 @@ export default function AnalyticsPage() {
               <TBody>
                 {rankedHeat.map((h) => (
                   <TR key={h.state}>
-                    <TD className="font-mono font-semibold text-slate-100">{h.state}</TD>
+                    <TD className="font-mono font-semibold text-stone-100">{h.state}</TD>
                     <TD>
                       {h.materiality_band ? (
                         <Badge tone={bandTone(h.materiality_band)}>{h.materiality_band}</Badge>
@@ -342,7 +342,7 @@ export default function AnalyticsPage() {
                     <TD className="text-right">{currency(h.tax)}</TD>
                     <TD className="text-right text-amber-300">{currency(h.penalty)}</TD>
                     <TD className="text-right text-amber-300">{currency(h.interest)}</TD>
-                    <TD className="text-right font-semibold text-violet-300">{currency(h.total)}</TD>
+                    <TD className="text-right font-semibold text-blue-300">{currency(h.total)}</TD>
                     <TD className="text-right text-emerald-300">{currency(h.vda_savings)}</TD>
                   </TR>
                 ))}
@@ -352,9 +352,9 @@ export default function AnalyticsPage() {
         </CardBody>
       </Card>
 
-      <p className="text-xs text-slate-600">
+      <p className="text-xs text-stone-600">
         Need per-engagement detail?{' '}
-        <Link href="/dashboard/engagements" className="text-violet-400 hover:text-violet-300">
+        <Link href="/dashboard/engagements" className="text-blue-400 hover:text-blue-300">
           Browse engagements
         </Link>
         .

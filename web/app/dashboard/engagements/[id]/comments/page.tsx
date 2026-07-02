@@ -47,7 +47,7 @@ const SUB_NAV: { label: string; slug: string }[] = [
 
 function SubNav({ id, active }: { id: string; active: string }) {
   return (
-    <div className="mb-6 flex flex-wrap gap-1 rounded-xl border border-slate-800 bg-slate-900/60 p-1">
+    <div className="mb-6 flex flex-wrap gap-1 rounded-xl border border-stone-800 bg-stone-900/60 p-1">
       {SUB_NAV.map((t) => {
         const href = t.slug ? `/dashboard/engagements/${id}/${t.slug}` : `/dashboard/engagements/${id}`
         const isActive = t.slug === active
@@ -56,7 +56,7 @@ function SubNav({ id, active }: { id: string; active: string }) {
             key={t.slug || 'summary'}
             href={href}
             className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
-              isActive ? 'bg-violet-600 text-white' : 'text-slate-400 hover:bg-slate-800 hover:text-slate-100'
+              isActive ? 'bg-blue-600 text-white' : 'text-stone-400 hover:bg-stone-800 hover:text-stone-100'
             }`}
           >
             {t.label}
@@ -261,19 +261,19 @@ export default function CommentsPage() {
   const canDelete = (c: Comment) => meId === null || c.user_id === meId
 
   const CommentBubble = ({ c, isReply }: { c: Comment; isReply?: boolean }) => (
-    <div className={`flex gap-3 ${isReply ? 'ml-6 border-l border-slate-800 pl-4' : ''}`}>
-      <div className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-violet-500/20 text-xs font-semibold text-violet-300">
+    <div className={`flex gap-3 ${isReply ? 'ml-6 border-l border-stone-800 pl-4' : ''}`}>
+      <div className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-blue-500/20 text-xs font-semibold text-blue-300">
         {initials(c.user_id)}
       </div>
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-sm font-medium text-slate-200">
+          <span className="text-sm font-medium text-stone-200">
             {c.user_id === meId ? 'You' : c.user_id.slice(0, 12)}
           </span>
           {c.state && <Badge tone="blue">{c.state}</Badge>}
-          <span className="text-xs text-slate-500">{fmtTime(c.created_at)}</span>
+          <span className="text-xs text-stone-500">{fmtTime(c.created_at)}</span>
         </div>
-        <p className="mt-1 whitespace-pre-wrap break-words text-sm text-slate-300">{c.body}</p>
+        <p className="mt-1 whitespace-pre-wrap break-words text-sm text-stone-300">{c.body}</p>
         <div className="mt-1 flex items-center gap-3 text-xs">
           {!isReply && (
             <button
@@ -281,7 +281,7 @@ export default function CommentsPage() {
                 setReplyTo(c)
                 setReplyBody('')
               }}
-              className="text-slate-500 transition-colors hover:text-violet-300"
+              className="text-stone-500 transition-colors hover:text-blue-300"
             >
               Reply
             </button>
@@ -289,7 +289,7 @@ export default function CommentsPage() {
           {canDelete(c) && (
             <button
               onClick={() => remove(c)}
-              className="text-slate-500 transition-colors hover:text-red-300"
+              className="text-stone-500 transition-colors hover:text-red-300"
             >
               Delete
             </button>
@@ -307,12 +307,12 @@ export default function CommentsPage() {
         <div>
           <Link
             href={`/dashboard/engagements/${id}`}
-            className="text-xs text-slate-500 transition-colors hover:text-violet-300"
+            className="text-xs text-stone-500 transition-colors hover:text-blue-300"
           >
             ← Engagement
           </Link>
-          <h1 className="mt-1 text-2xl font-bold text-slate-100">Comments &amp; Collaboration</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <h1 className="mt-1 text-2xl font-bold text-stone-100">Comments &amp; Collaboration</h1>
+          <p className="mt-1 text-sm text-stone-500">
             Threaded discussion on findings, and a locked shareable snapshot for the diligence team.
           </p>
         </div>
@@ -338,7 +338,7 @@ export default function CommentsPage() {
           {/* New comment composer */}
           <Card>
             <CardHeader>
-              <h2 className="text-sm font-semibold text-slate-200">Add a comment</h2>
+              <h2 className="text-sm font-semibold text-stone-200">Add a comment</h2>
             </CardHeader>
             <CardBody className="space-y-3">
               <textarea
@@ -346,16 +346,16 @@ export default function CommentsPage() {
                 onChange={(e) => setBody(e.target.value)}
                 rows={3}
                 placeholder="Note a finding, ask a question, flag a risk…"
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white placeholder:text-slate-500 focus:border-violet-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white placeholder:text-stone-500 focus:border-blue-500 focus:outline-none"
               />
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div className="flex items-center gap-2">
-                  <label className="text-xs font-medium text-slate-400">Tag state</label>
+                  <label className="text-xs font-medium text-stone-400">Tag state</label>
                   <input
                     value={commentState}
                     onChange={(e) => setCommentState(e.target.value.toUpperCase().slice(0, 2))}
                     placeholder="e.g. CA"
-                    className="w-24 rounded-lg border border-slate-700 bg-slate-800 px-3 py-1.5 text-sm text-white placeholder:text-slate-500 focus:border-violet-500 focus:outline-none"
+                    className="w-24 rounded-lg border border-stone-700 bg-stone-800 px-3 py-1.5 text-sm text-white placeholder:text-stone-500 focus:border-blue-500 focus:outline-none"
                   />
                 </div>
                 <Button onClick={post} disabled={posting || !body.trim()}>
@@ -368,11 +368,11 @@ export default function CommentsPage() {
           {/* Filters */}
           {comments.length > 0 && (
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex flex-wrap gap-1 rounded-lg border border-slate-800 bg-slate-900/60 p-1">
+              <div className="flex flex-wrap gap-1 rounded-lg border border-stone-800 bg-stone-900/60 p-1">
                 <button
                   onClick={() => setStateFilter('')}
                   className={`rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
-                    stateFilter === '' ? 'bg-violet-600 text-white' : 'text-slate-400 hover:bg-slate-800 hover:text-slate-100'
+                    stateFilter === '' ? 'bg-blue-600 text-white' : 'text-stone-400 hover:bg-stone-800 hover:text-stone-100'
                   }`}
                 >
                   All states
@@ -382,7 +382,7 @@ export default function CommentsPage() {
                     key={s}
                     onClick={() => setStateFilter(s)}
                     className={`rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
-                      stateFilter === s ? 'bg-violet-600 text-white' : 'text-slate-400 hover:bg-slate-800 hover:text-slate-100'
+                      stateFilter === s ? 'bg-blue-600 text-white' : 'text-stone-400 hover:bg-stone-800 hover:text-stone-100'
                     }`}
                   >
                     {s}
@@ -393,7 +393,7 @@ export default function CommentsPage() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search comments…"
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white placeholder:text-slate-500 focus:border-violet-500 focus:outline-none sm:w-72"
+                className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white placeholder:text-stone-500 focus:border-blue-500 focus:outline-none sm:w-72"
               />
             </div>
           )}
@@ -408,7 +408,7 @@ export default function CommentsPage() {
           ) : threads.length === 0 ? (
             <Card>
               <CardBody>
-                <p className="py-6 text-center text-sm text-slate-500">No comments match the current filters.</p>
+                <p className="py-6 text-center text-sm text-stone-500">No comments match the current filters.</p>
               </CardBody>
             </Card>
           ) : (
@@ -424,14 +424,14 @@ export default function CommentsPage() {
                         <CommentBubble key={r.id} c={r} isReply />
                       ))}
                     {replyTo?.id === root.id && (
-                      <div className="ml-6 space-y-2 border-l border-violet-500/40 pl-4">
+                      <div className="ml-6 space-y-2 border-l border-blue-500/40 pl-4">
                         <textarea
                           value={replyBody}
                           onChange={(e) => setReplyBody(e.target.value)}
                           rows={2}
                           autoFocus
                           placeholder={`Reply to ${root.user_id === meId ? 'yourself' : root.user_id.slice(0, 12)}…`}
-                          className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white placeholder:text-slate-500 focus:border-violet-500 focus:outline-none"
+                          className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white placeholder:text-stone-500 focus:border-blue-500 focus:outline-none"
                         />
                         <div className="flex justify-end gap-2">
                           <Button variant="ghost" size="sm" onClick={() => setReplyTo(null)}>
@@ -477,32 +477,32 @@ export default function CommentsPage() {
               Snapshot created. Share the read-only link below with your diligence team.
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">Read-only link</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">Read-only link</label>
               <div className="flex gap-2">
                 <input
                   readOnly
                   value={shareUrl}
-                  className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-300 focus:outline-none"
+                  className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-stone-300 focus:outline-none"
                 />
                 <Button variant="secondary" onClick={copyShare} disabled={!shareUrl}>
                   {copied ? 'Copied' : 'Copy'}
                 </Button>
               </div>
-              {createdSnap.label && <p className="mt-2 text-xs text-slate-500">Label: {createdSnap.label}</p>}
+              {createdSnap.label && <p className="mt-2 text-xs text-stone-500">Label: {createdSnap.label}</p>}
             </div>
           </div>
         ) : (
           <div className="space-y-4">
-            <p className="text-sm text-slate-400">
+            <p className="text-sm text-stone-400">
               A snapshot freezes the current exposure results into a locked, read-only page you can share externally.
             </p>
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">Label (optional)</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">Label (optional)</label>
               <input
                 value={snapLabel}
                 onChange={(e) => setSnapLabel(e.target.value)}
                 placeholder="e.g. Q2 diligence packet"
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white placeholder:text-slate-500 focus:border-violet-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white placeholder:text-stone-500 focus:border-blue-500 focus:outline-none"
               />
             </div>
           </div>

@@ -184,8 +184,8 @@ export default function NotificationsPage() {
     <div className="space-y-8">
       <header className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100">Notifications</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <h1 className="text-2xl font-bold text-stone-100">Notifications</h1>
+          <p className="mt-1 text-sm text-stone-500">
             Alerts on nexus crossings, computations, and workspace activity.
           </p>
         </div>
@@ -215,14 +215,14 @@ export default function NotificationsPage() {
         <div className="lg:col-span-3">
           <Card>
             <CardHeader className="flex flex-wrap items-center justify-between gap-3">
-              <h2 className="text-base font-semibold text-slate-100">Your notifications</h2>
-              <div className="flex items-center gap-1 rounded-lg border border-slate-700 bg-slate-800 p-0.5">
+              <h2 className="text-base font-semibold text-stone-100">Your notifications</h2>
+              <div className="flex items-center gap-1 rounded-lg border border-stone-700 bg-stone-800 p-0.5">
                 {(['all', 'unread'] as const).map((f) => (
                   <button
                     key={f}
                     onClick={() => setFilter(f)}
                     className={`rounded-md px-3 py-1 text-xs font-medium capitalize transition-colors ${
-                      filter === f ? 'bg-violet-600 text-white' : 'text-slate-400 hover:text-slate-200'
+                      filter === f ? 'bg-blue-600 text-white' : 'text-stone-400 hover:text-stone-200'
                     }`}
                   >
                     {f}
@@ -244,28 +244,28 @@ export default function NotificationsPage() {
                   />
                 </div>
               ) : (
-                <ul className="divide-y divide-slate-800">
+                <ul className="divide-y divide-stone-800">
                   {visibleNotifications.map((n) => (
                     <li
                       key={n.id}
-                      className={`flex items-start gap-3 px-5 py-4 ${n.is_read ? '' : 'bg-violet-500/5'}`}
+                      className={`flex items-start gap-3 px-5 py-4 ${n.is_read ? '' : 'bg-blue-500/5'}`}
                     >
                       <span
                         className={`mt-1.5 h-2 w-2 flex-shrink-0 rounded-full ${
-                          n.is_read ? 'bg-slate-700' : 'bg-violet-400'
+                          n.is_read ? 'bg-stone-700' : 'bg-blue-400'
                         }`}
                         aria-hidden
                       />
                       <div className="min-w-0 flex-1">
                         <div className="flex flex-wrap items-center gap-2">
-                          <span className="font-medium text-slate-100">{n.title || 'Notification'}</span>
+                          <span className="font-medium text-stone-100">{n.title || 'Notification'}</span>
                           {n.kind ? <Badge tone={kindTone(n.kind)}>{n.kind}</Badge> : null}
                           {n.workspace_id && workspaceName(n.workspace_id) ? (
                             <Badge tone="slate">{workspaceName(n.workspace_id)}</Badge>
                           ) : null}
                         </div>
-                        {n.body ? <p className="mt-1 text-sm text-slate-400">{n.body}</p> : null}
-                        <div className="mt-1 text-xs text-slate-600">{timeAgo(n.created_at)}</div>
+                        {n.body ? <p className="mt-1 text-sm text-stone-400">{n.body}</p> : null}
+                        <div className="mt-1 text-xs text-stone-600">{timeAgo(n.created_at)}</div>
                       </div>
                       {!n.is_read ? (
                         <Button
@@ -277,7 +277,7 @@ export default function NotificationsPage() {
                           {busyId === n.id ? '...' : 'Mark read'}
                         </Button>
                       ) : (
-                        <span className="mt-1 text-xs text-slate-600">Read</span>
+                        <span className="mt-1 text-xs text-stone-600">Read</span>
                       )}
                     </li>
                   ))}
@@ -291,12 +291,12 @@ export default function NotificationsPage() {
         <div className="lg:col-span-2">
           <Card>
             <CardHeader className="flex flex-wrap items-center justify-between gap-3">
-              <h2 className="text-base font-semibold text-slate-100">Workspace activity</h2>
+              <h2 className="text-base font-semibold text-stone-100">Workspace activity</h2>
               {workspaces.length > 0 ? (
                 <select
                   value={selectedWorkspace}
                   onChange={(e) => onSelectWorkspace(e.target.value)}
-                  className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-1.5 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+                  className="rounded-lg border border-stone-700 bg-stone-800 px-3 py-1.5 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
                 >
                   {workspaces.map((w) => (
                     <option key={w.id} value={w.id}>
@@ -331,13 +331,13 @@ export default function NotificationsPage() {
                     .slice()
                     .sort((a, b) => new Date(b.created_at || 0).getTime() - new Date(a.created_at || 0).getTime())
                     .map((a) => (
-                      <li key={a.id} className="relative border-l border-slate-800 pl-4">
-                        <span className="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-slate-900 bg-violet-500" />
-                        <div className="text-sm text-slate-200">
-                          <span className="font-medium text-violet-300">{a.action || 'action'}</span>
-                          {a.target ? <span className="text-slate-400"> · {a.target}</span> : null}
+                      <li key={a.id} className="relative border-l border-stone-800 pl-4">
+                        <span className="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-stone-900 bg-blue-500" />
+                        <div className="text-sm text-stone-200">
+                          <span className="font-medium text-blue-300">{a.action || 'action'}</span>
+                          {a.target ? <span className="text-stone-400"> · {a.target}</span> : null}
                         </div>
-                        <div className="mt-0.5 text-xs text-slate-600">{timeAgo(a.created_at)}</div>
+                        <div className="mt-0.5 text-xs text-stone-600">{timeAgo(a.created_at)}</div>
                       </li>
                     ))}
                 </ol>

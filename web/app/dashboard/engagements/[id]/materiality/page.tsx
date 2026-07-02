@@ -79,7 +79,7 @@ function bandTone(band: string | null | undefined): 'red' | 'amber' | 'green' | 
 
 function SubNav({ id, active }: { id: string; active: string }) {
   return (
-    <div className="mb-6 flex flex-wrap gap-1 rounded-xl border border-slate-800 bg-slate-900/60 p-1">
+    <div className="mb-6 flex flex-wrap gap-1 rounded-xl border border-stone-800 bg-stone-900/60 p-1">
       {SUB_NAV.map((t) => {
         const href = t.slug ? `/dashboard/engagements/${id}/${t.slug}` : `/dashboard/engagements/${id}`
         const isActive = t.slug === active
@@ -88,7 +88,7 @@ function SubNav({ id, active }: { id: string; active: string }) {
             key={t.slug || 'summary'}
             href={href}
             className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
-              isActive ? 'bg-violet-600 text-white' : 'text-slate-400 hover:bg-slate-800 hover:text-slate-100'
+              isActive ? 'bg-blue-600 text-white' : 'text-stone-400 hover:bg-stone-800 hover:text-stone-100'
             }`}
           >
             {t.label}
@@ -192,12 +192,12 @@ export default function MaterialityPage() {
       <div className="mb-6">
         <Link
           href={`/dashboard/engagements/${id}`}
-          className="text-xs text-slate-500 transition-colors hover:text-violet-300"
+          className="text-xs text-stone-500 transition-colors hover:text-blue-300"
         >
           ← Engagement
         </Link>
-        <h1 className="mt-1 text-2xl font-bold text-slate-100">Materiality Ranking</h1>
-        <p className="mt-1 text-sm text-slate-500">
+        <h1 className="mt-1 text-2xl font-bold text-stone-100">Materiality Ranking</h1>
+        <p className="mt-1 text-sm text-stone-500">
           States ranked by exposure, materiality bands, and a top-N concentration rollup.
         </p>
       </div>
@@ -246,7 +246,7 @@ export default function MaterialityPage() {
           {/* Band distribution */}
           <Card>
             <CardHeader>
-              <h2 className="text-sm font-semibold text-slate-200">Materiality bands</h2>
+              <h2 className="text-sm font-semibold text-stone-200">Materiality bands</h2>
             </CardHeader>
             <CardBody className="space-y-3">
               {bandGroups.map(([band, g]) => {
@@ -261,17 +261,17 @@ export default function MaterialityPage() {
                     ? 'bg-emerald-500'
                     : tone === 'blue'
                     ? 'bg-sky-500'
-                    : 'bg-slate-500'
+                    : 'bg-stone-500'
                 return (
                   <div key={band}>
                     <div className="mb-1 flex items-center justify-between text-sm">
                       <span className="flex items-center gap-2">
                         <Badge tone={tone}>{band}</Badge>
-                        <span className="text-xs text-slate-500">{g.count} states</span>
+                        <span className="text-xs text-stone-500">{g.count} states</span>
                       </span>
-                      <span className="tabular-nums text-slate-300">{money(g.total)}</span>
+                      <span className="tabular-nums text-stone-300">{money(g.total)}</span>
                     </div>
-                    <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-800">
+                    <div className="h-2.5 w-full overflow-hidden rounded-full bg-stone-800">
                       <div className={`h-full rounded-full ${bar}`} style={{ width: `${Math.max(2, pct)}%` }} />
                     </div>
                   </div>
@@ -284,20 +284,20 @@ export default function MaterialityPage() {
           <Card>
             <CardBody className="flex flex-wrap items-end gap-4">
               <div>
-                <label className="mb-1 block text-xs font-medium text-slate-400">Search state</label>
+                <label className="mb-1 block text-xs font-medium text-stone-400">Search state</label>
                 <input
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="e.g. CA"
-                  className="w-32 rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-violet-500 focus:outline-none"
+                  className="w-32 rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white focus:border-blue-500 focus:outline-none"
                 />
               </div>
               <div>
-                <label className="mb-1 block text-xs font-medium text-slate-400">Sort by</label>
+                <label className="mb-1 block text-xs font-medium text-stone-400">Sort by</label>
                 <select
                   value={sort}
                   onChange={(e) => setSort(e.target.value)}
-                  className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-violet-500 focus:outline-none"
+                  className="rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white focus:border-blue-500 focus:outline-none"
                 >
                   {SORT_OPTIONS.map((o) => (
                     <option key={o.value} value={o.value}>
@@ -307,14 +307,14 @@ export default function MaterialityPage() {
                 </select>
               </div>
               <div>
-                <label className="mb-1 block text-xs font-medium text-slate-400">Min exposure threshold</label>
+                <label className="mb-1 block text-xs font-medium text-stone-400">Min exposure threshold</label>
                 <div className="flex gap-2">
                   <input
                     value={thresholdInput}
                     onChange={(e) => setThresholdInput(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && applyThreshold()}
                     placeholder="e.g. 10000"
-                    className="w-32 rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-violet-500 focus:outline-none"
+                    className="w-32 rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white focus:border-blue-500 focus:outline-none"
                   />
                   <Button variant="secondary" size="sm" onClick={applyThreshold}>
                     Apply
@@ -327,14 +327,14 @@ export default function MaterialityPage() {
                 </div>
               </div>
               <div>
-                <label className="mb-1 block text-xs font-medium text-slate-400">Top-N rollup</label>
+                <label className="mb-1 block text-xs font-medium text-stone-400">Top-N rollup</label>
                 <div className="flex gap-1">
                   {TOP_N_OPTIONS.map((n) => (
                     <button
                       key={n}
                       onClick={() => setTopN(n)}
                       className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                        topN === n ? 'bg-violet-600 text-white' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                        topN === n ? 'bg-blue-600 text-white' : 'bg-stone-800 text-stone-300 hover:bg-stone-700'
                       }`}
                     >
                       {n}
@@ -349,13 +349,13 @@ export default function MaterialityPage() {
           <Card>
             <CardHeader>
               <div className="flex items-center justify-between">
-                <h2 className="text-sm font-semibold text-slate-200">Ranked states</h2>
-                <span className="text-xs text-slate-500">{filtered.length} shown</span>
+                <h2 className="text-sm font-semibold text-stone-200">Ranked states</h2>
+                <span className="text-xs text-stone-500">{filtered.length} shown</span>
               </div>
             </CardHeader>
             {filtered.length === 0 ? (
               <CardBody>
-                <p className="text-sm text-slate-500">No states match your filters.</p>
+                <p className="text-sm text-stone-500">No states match your filters.</p>
               </CardBody>
             ) : (
               <Table>
@@ -377,25 +377,25 @@ export default function MaterialityPage() {
                     const pct = (num(r.total) / maxTotal) * 100
                     const inTop = topRollup.top.some((t) => t.state === r.state)
                     return (
-                      <TR key={r.state} className={inTop ? 'bg-violet-500/5' : ''}>
-                        <TD className="text-slate-500">{i + 1}</TD>
-                        <TD className="font-semibold text-slate-100">{r.state}</TD>
+                      <TR key={r.state} className={inTop ? 'bg-blue-500/5' : ''}>
+                        <TD className="text-stone-500">{i + 1}</TD>
+                        <TD className="font-semibold text-stone-100">{r.state}</TD>
                         <TD>
                           {r.materiality_band ? (
                             <Badge tone={bandTone(r.materiality_band)}>{r.materiality_band}</Badge>
                           ) : (
-                            <span className="text-xs text-slate-600">—</span>
+                            <span className="text-xs text-stone-600">—</span>
                           )}
                         </TD>
-                        <TD className="text-right tabular-nums text-slate-300">{money(r.tax)}</TD>
-                        <TD className="text-right tabular-nums text-slate-300">{money(r.penalty)}</TD>
-                        <TD className="text-right tabular-nums text-slate-300">{money(r.interest)}</TD>
-                        <TD className="text-right font-semibold tabular-nums text-slate-100">{money(r.total)}</TD>
+                        <TD className="text-right tabular-nums text-stone-300">{money(r.tax)}</TD>
+                        <TD className="text-right tabular-nums text-stone-300">{money(r.penalty)}</TD>
+                        <TD className="text-right tabular-nums text-stone-300">{money(r.interest)}</TD>
+                        <TD className="text-right font-semibold tabular-nums text-stone-100">{money(r.total)}</TD>
                         <TD className="text-right tabular-nums text-emerald-300">{money(r.vda_savings)}</TD>
                         <TD>
-                          <div className="h-2 w-full overflow-hidden rounded-full bg-slate-800">
+                          <div className="h-2 w-full overflow-hidden rounded-full bg-stone-800">
                             <div
-                              className="h-full rounded-full bg-violet-500"
+                              className="h-full rounded-full bg-blue-500"
                               style={{ width: `${Math.max(2, pct)}%` }}
                             />
                           </div>

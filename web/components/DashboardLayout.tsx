@@ -83,9 +83,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   if (checking) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-slate-950">
-        <div className="flex items-center gap-3 text-slate-400">
-          <span className="h-5 w-5 animate-spin rounded-full border-2 border-slate-700 border-t-violet-500" />
+      <div className="flex min-h-screen items-center justify-center bg-stone-950">
+        <div className="flex items-center gap-3 text-stone-400">
+          <span className="h-5 w-5 animate-spin rounded-full border-2 border-stone-700 border-t-blue-500" />
           Loading workspace...
         </div>
       </div>
@@ -96,7 +96,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     <nav className="flex-1 space-y-6 overflow-y-auto px-3 py-4">
       {sections.map((section) => (
         <div key={section.title}>
-          <div className="px-3 pb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-600">
+          <div className="px-3 pb-2 text-[11px] font-semibold uppercase tracking-wider text-stone-600">
             {section.title}
           </div>
           <div className="space-y-1">
@@ -107,10 +107,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className={`block rounded-lg px-3 py-2 text-sm transition-colors ${
+                  className={`block rounded-lg border-l-2 px-3 py-2 text-sm transition-colors ${
                     active
-                      ? 'bg-violet-600/20 font-medium text-violet-200'
-                      : 'text-slate-400 hover:bg-slate-800 hover:text-slate-100'
+                      ? 'border-blue-500 bg-blue-500/10 font-medium text-blue-300'
+                      : 'border-transparent text-stone-400 hover:bg-stone-800 hover:text-stone-100'
                   }`}
                 >
                   {item.label}
@@ -124,15 +124,15 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   )
 
   return (
-    <div className="flex min-h-screen bg-slate-950">
+    <div className="flex min-h-screen bg-stone-950">
       {/* Desktop sidebar */}
-      <aside className="hidden w-64 shrink-0 flex-col border-r border-slate-800 bg-slate-900/60 lg:flex">
-        <div className="flex h-16 items-center border-b border-slate-800 px-5">
+      <aside className="hidden w-72 shrink-0 flex-col border-r border-stone-800 bg-stone-900/60 lg:flex">
+        <div className="flex h-16 items-center border-b border-stone-800 px-5">
           <Link href="/dashboard" className="flex items-center gap-2">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-violet-600 text-sm font-black text-white">
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-sm font-black text-white">
               N
             </span>
-            <span className="text-sm font-semibold tracking-tight text-slate-100">NexusExposureQuantifier</span>
+            <span className="text-sm font-semibold tracking-tight text-stone-100">NexusExposureQuantifier</span>
           </Link>
         </div>
         {nav}
@@ -141,11 +141,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       {/* Mobile drawer */}
       {mobileOpen ? (
         <div className="fixed inset-0 z-40 lg:hidden">
-          <div className="absolute inset-0 bg-slate-950/70" onClick={() => setMobileOpen(false)} />
-          <aside className="relative z-10 flex h-full w-64 flex-col border-r border-slate-800 bg-slate-900">
-            <div className="flex h-16 items-center justify-between border-b border-slate-800 px-5">
-              <span className="text-sm font-semibold text-slate-100">NexusExposureQuantifier</span>
-              <button onClick={() => setMobileOpen(false)} className="text-slate-500 hover:text-slate-200">
+          <div className="absolute inset-0 bg-stone-950/70" onClick={() => setMobileOpen(false)} />
+          <aside className="relative z-10 flex h-full w-64 flex-col border-r border-stone-800 bg-stone-900">
+            <div className="flex h-16 items-center justify-between border-b border-stone-800 px-5">
+              <span className="text-sm font-semibold text-stone-100">NexusExposureQuantifier</span>
+              <button onClick={() => setMobileOpen(false)} className="text-stone-500 hover:text-stone-200">
                 ✕
               </button>
             </div>
@@ -156,23 +156,23 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
       {/* Main column */}
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="flex h-16 items-center justify-between border-b border-slate-800 bg-slate-900/40 px-4 lg:px-6">
+        <header className="flex h-16 items-center justify-between border-b border-stone-800 bg-stone-900/40 px-4 lg:px-6">
           <div className="flex items-center gap-3">
             <button
               onClick={() => setMobileOpen(true)}
-              className="rounded-lg p-2 text-slate-400 hover:bg-slate-800 hover:text-slate-100 lg:hidden"
+              className="rounded-lg p-2 text-stone-400 hover:bg-stone-800 hover:text-stone-100 lg:hidden"
               aria-label="Open menu"
             >
               ☰
             </button>
-            <div className="text-sm text-slate-400">
-              <span className="text-slate-500">Workspace</span>{' '}
-              <span className="font-medium text-slate-200">{workspaceName}</span>
+            <div className="text-sm text-stone-400">
+              <span className="text-stone-500">Workspace</span>{' '}
+              <span className="font-medium text-stone-200">{workspaceName}</span>
             </div>
           </div>
           <button
             onClick={signOut}
-            className="rounded-lg border border-slate-700 px-3 py-1.5 text-xs font-medium text-slate-300 transition-colors hover:bg-slate-800 hover:text-white"
+            className="rounded-lg border border-stone-700 px-3 py-1.5 text-xs font-medium text-stone-300 transition-colors hover:bg-stone-800 hover:text-white"
           >
             Sign out
           </button>

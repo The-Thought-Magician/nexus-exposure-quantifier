@@ -204,8 +204,8 @@ export default function EngagementsPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold text-slate-100">Engagements</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <h1 className="text-2xl font-semibold text-stone-100">Engagements</h1>
+          <p className="mt-1 text-sm text-stone-500">
             Nexus exposure studies across your client base. Create, clone and drill into each engagement.
           </p>
         </div>
@@ -239,12 +239,12 @@ export default function EngagementsPage() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search engagements…"
-                className="min-w-[12rem] flex-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-violet-500 focus:outline-none"
+                className="min-w-[12rem] flex-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-blue-500 focus:outline-none"
               />
               <select
                 value={wsFilter}
                 onChange={(e) => setWsFilter(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
               >
                 <option value="all">All workspaces</option>
                 {workspaces.map((w) => (
@@ -256,7 +256,7 @@ export default function EngagementsPage() {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
               >
                 <option value="all">All statuses</option>
                 {statuses.map((s) => (
@@ -311,20 +311,20 @@ export default function EngagementsPage() {
                     {filtered.map((e) => (
                       <TR key={e.id}>
                         <TD>
-                          <Link href={`/dashboard/engagements/${e.id}`} className="font-medium text-slate-100 hover:text-violet-300">
+                          <Link href={`/dashboard/engagements/${e.id}`} className="font-medium text-stone-100 hover:text-blue-300">
                             {e.name}
                           </Link>
-                          {e.description ? <div className="mt-0.5 text-xs text-slate-500">{e.description}</div> : null}
+                          {e.description ? <div className="mt-0.5 text-xs text-stone-500">{e.description}</div> : null}
                         </TD>
-                        <TD className="text-slate-400">{wsName.get(e.workspace_id) || '—'}</TD>
+                        <TD className="text-stone-400">{wsName.get(e.workspace_id) || '—'}</TD>
                         <TD>
                           <div className="flex items-center gap-2">
                             <Badge tone={statusTone(e.status)}>{e.status || 'draft'}</Badge>
                             {e.is_locked ? <Badge tone="slate">🔒 locked</Badge> : null}
                           </div>
                         </TD>
-                        <TD className="text-slate-400">{fmtDate(e.as_of_date)}</TD>
-                        <TD className="text-right font-medium text-violet-300">{money(e.total_exposure)}</TD>
+                        <TD className="text-stone-400">{fmtDate(e.as_of_date)}</TD>
+                        <TD className="text-right font-medium text-blue-300">{money(e.total_exposure)}</TD>
                         <TD className="text-right text-emerald-300">{money(e.total_vda_savings)}</TD>
                         <TD>
                           <div className="flex justify-end gap-2">
@@ -371,23 +371,23 @@ export default function EngagementsPage() {
             <div className="rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-300">{formError}</div>
           ) : null}
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Name</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Name</label>
             <input
               value={form.name}
               onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
               placeholder="Acme Corp — 2024 nexus study"
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-violet-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-blue-500 focus:outline-none"
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Workspace</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Workspace</label>
             {workspaces.length === 0 ? (
               <p className="text-sm text-amber-300">Create a workspace first from the Workspaces page.</p>
             ) : (
               <select
                 value={form.workspace_id}
                 onChange={(e) => setForm((f) => ({ ...f, workspace_id: e.target.value }))}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
               >
                 {workspaces.map((w) => (
                   <option key={w.id} value={w.id}>
@@ -398,22 +398,22 @@ export default function EngagementsPage() {
             )}
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">As-of date</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">As-of date</label>
             <input
               type="date"
               value={form.as_of_date}
               onChange={(e) => setForm((f) => ({ ...f, as_of_date: e.target.value }))}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Description</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Description</label>
             <textarea
               value={form.description}
               onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))}
               rows={3}
               placeholder="Scope, entities, notes…"
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-violet-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-blue-500 focus:outline-none"
             />
           </div>
         </div>

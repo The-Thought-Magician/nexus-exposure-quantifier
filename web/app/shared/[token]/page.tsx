@@ -69,7 +69,7 @@ export default function SharedSnapshotPage({ params }: { params: Promise<{ token
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-slate-950">
+      <main className="min-h-screen bg-stone-950">
         <Spinner label="Loading shared snapshot..." />
       </main>
     )
@@ -77,7 +77,7 @@ export default function SharedSnapshotPage({ params }: { params: Promise<{ token
 
   if (error || !snapshot) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-slate-950 px-4">
+      <main className="flex min-h-screen items-center justify-center bg-stone-950 px-4">
         <div className="w-full max-w-lg">
           <EmptyState
             icon="🔒"
@@ -87,7 +87,7 @@ export default function SharedSnapshotPage({ params }: { params: Promise<{ token
               'This share link is invalid or has been revoked. Ask the engagement owner for a fresh link.'
             }
             action={
-              <Link href="/" className="text-sm text-violet-400 hover:text-violet-300">
+              <Link href="/" className="text-sm text-blue-400 hover:text-blue-300">
                 Go to NexusExposureQuantifier
               </Link>
             }
@@ -110,18 +110,18 @@ export default function SharedSnapshotPage({ params }: { params: Promise<{ token
   const recommended = scenarios.find((s) => s.is_recommended)
 
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-200">
+    <main className="min-h-screen bg-stone-950 text-stone-200">
       {/* Read-only banner */}
-      <div className="border-b border-violet-500/20 bg-violet-500/10">
+      <div className="border-b border-blue-500/20 bg-blue-500/10">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-6 py-3">
-          <div className="flex items-center gap-2 text-sm text-violet-200">
-            <span className="flex h-6 w-6 items-center justify-center rounded bg-violet-600 text-xs font-black text-white">
+          <div className="flex items-center gap-2 text-sm text-blue-200">
+            <span className="flex h-6 w-6 items-center justify-center rounded bg-blue-600 text-xs font-black text-white">
               N
             </span>
             <span className="font-semibold">NexusExposureQuantifier</span>
             <Badge tone="violet">Read-only diligence snapshot</Badge>
           </div>
-          <div className="text-xs text-slate-400">
+          <div className="text-xs text-stone-400">
             Shared {snapshot.created_at ? new Date(snapshot.created_at).toLocaleDateString() : ''}
           </div>
         </div>
@@ -130,16 +130,16 @@ export default function SharedSnapshotPage({ params }: { params: Promise<{ token
       <div className="mx-auto max-w-6xl space-y-8 px-6 py-10">
         <header>
           <div className="flex flex-wrap items-center gap-3">
-            <h1 className="text-2xl font-bold text-slate-100">
+            <h1 className="text-2xl font-bold text-stone-100">
               {engagement.name || snapshot.label || 'Exposure Snapshot'}
             </h1>
             {engagement.status ? <Badge tone="slate">{engagement.status}</Badge> : null}
             {engagement.is_locked ? <Badge tone="amber">Locked</Badge> : null}
           </div>
           {engagement.description ? (
-            <p className="mt-1 max-w-2xl text-sm text-slate-500">{engagement.description}</p>
+            <p className="mt-1 max-w-2xl text-sm text-stone-500">{engagement.description}</p>
           ) : null}
-          <p className="mt-2 text-xs text-slate-500">
+          <p className="mt-2 text-xs text-stone-500">
             {asOf ? `As of ${new Date(asOf).toLocaleDateString()}` : null}
             {snapshot.label ? `  ·  ${snapshot.label}` : null}
           </p>
@@ -166,7 +166,7 @@ export default function SharedSnapshotPage({ params }: { params: Promise<{ token
         {/* Per-state exposure */}
         <Card>
           <CardHeader>
-            <h2 className="text-base font-semibold text-slate-100">Per-state exposure</h2>
+            <h2 className="text-base font-semibold text-stone-100">Per-state exposure</h2>
           </CardHeader>
           <CardBody className="p-0">
             {stateExposures.length === 0 ? (
@@ -190,12 +190,12 @@ export default function SharedSnapshotPage({ params }: { params: Promise<{ token
                 <TBody>
                   {stateExposures.map((s) => (
                     <TR key={s.state}>
-                      <TD className="font-medium text-slate-100">{s.state}</TD>
+                      <TD className="font-medium text-stone-100">{s.state}</TD>
                       <TD className="text-right">{currency(s.tax)}</TD>
                       <TD className="text-right text-amber-300">{currency(s.penalty)}</TD>
                       <TD className="text-right text-amber-300">{currency(s.interest)}</TD>
-                      <TD className="text-right font-semibold text-slate-100">{currency(s.total)}</TD>
-                      <TD className="text-right text-slate-400">{currency(s.vda_total)}</TD>
+                      <TD className="text-right font-semibold text-stone-100">{currency(s.total)}</TD>
+                      <TD className="text-right text-stone-400">{currency(s.vda_total)}</TD>
                       <TD className="text-right text-emerald-300">{currency(s.vda_savings)}</TD>
                       <TD>
                         <Badge tone={bandTone(s.materiality_band)}>{s.materiality_band || 'n/a'}</Badge>
@@ -212,7 +212,7 @@ export default function SharedSnapshotPage({ params }: { params: Promise<{ token
         {crossings.length > 0 ? (
           <Card>
             <CardHeader>
-              <h2 className="text-base font-semibold text-slate-100">Nexus crossings</h2>
+              <h2 className="text-base font-semibold text-stone-100">Nexus crossings</h2>
             </CardHeader>
             <CardBody className="p-0">
               <Table>
@@ -229,7 +229,7 @@ export default function SharedSnapshotPage({ params }: { params: Promise<{ token
                 <TBody>
                   {crossings.map((c) => (
                     <TR key={c.state}>
-                      <TD className="font-medium text-slate-100">{c.state}</TD>
+                      <TD className="font-medium text-stone-100">{c.state}</TD>
                       <TD>
                         {c.has_crossed ? (
                           <Badge tone="red">Crossed</Badge>
@@ -237,12 +237,12 @@ export default function SharedSnapshotPage({ params }: { params: Promise<{ token
                           <Badge tone="green">Below threshold</Badge>
                         )}
                       </TD>
-                      <TD className="text-slate-400">
+                      <TD className="text-stone-400">
                         {c.crossing_date ? new Date(c.crossing_date).toLocaleDateString() : '—'}
                       </TD>
-                      <TD className="text-slate-400">{c.tripping_test || '—'}</TD>
+                      <TD className="text-stone-400">{c.tripping_test || '—'}</TD>
                       <TD className="text-right">{currency(c.measure_at_crossing)}</TD>
-                      <TD className="text-right text-slate-400">{currency(c.threshold_used)}</TD>
+                      <TD className="text-right text-stone-400">{currency(c.threshold_used)}</TD>
                     </TR>
                   ))}
                 </TBody>
@@ -255,7 +255,7 @@ export default function SharedSnapshotPage({ params }: { params: Promise<{ token
         {scenarios.length > 0 ? (
           <Card>
             <CardHeader>
-              <h2 className="text-base font-semibold text-slate-100">Remediation scenarios</h2>
+              <h2 className="text-base font-semibold text-stone-100">Remediation scenarios</h2>
             </CardHeader>
             <CardBody>
               <div className="grid gap-4 md:grid-cols-3">
@@ -271,24 +271,24 @@ export default function SharedSnapshotPage({ params }: { params: Promise<{ token
                       className={`rounded-xl border p-4 ${
                         sc.is_recommended
                           ? 'border-emerald-500/40 bg-emerald-500/5'
-                          : 'border-slate-800 bg-slate-900'
+                          : 'border-stone-800 bg-stone-900'
                       }`}
                     >
                       <div className="flex items-center justify-between">
-                        <span className="text-sm font-semibold capitalize text-slate-200">
+                        <span className="text-sm font-semibold capitalize text-stone-200">
                           {sc.kind}
                           {sc.wait_months ? ` (${sc.wait_months}mo)` : ''}
                         </span>
                         {sc.is_recommended ? <Badge tone="green">Recommended</Badge> : null}
                       </div>
-                      <div className="mt-3 text-2xl font-semibold text-slate-100">{currency(sc.total)}</div>
-                      <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-slate-800">
+                      <div className="mt-3 text-2xl font-semibold text-stone-100">{currency(sc.total)}</div>
+                      <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-stone-800">
                         <div
-                          className={`h-full ${sc.is_recommended ? 'bg-emerald-500' : 'bg-violet-500'}`}
+                          className={`h-full ${sc.is_recommended ? 'bg-emerald-500' : 'bg-blue-500'}`}
                           style={{ width: `${pct}%` }}
                         />
                       </div>
-                      <div className="mt-3 space-y-0.5 text-xs text-slate-500">
+                      <div className="mt-3 space-y-0.5 text-xs text-stone-500">
                         <div>Tax {currency(sc.total_tax)}</div>
                         <div>Penalty {currency(sc.total_penalty)}</div>
                         <div>Interest {currency(sc.total_interest)}</div>
@@ -301,7 +301,7 @@ export default function SharedSnapshotPage({ params }: { params: Promise<{ token
           </Card>
         ) : null}
 
-        <footer className="border-t border-slate-800 pt-6 text-xs text-slate-600">
+        <footer className="border-t border-stone-800 pt-6 text-xs text-stone-600">
           This is a point-in-time, read-only snapshot generated by NexusExposureQuantifier. Figures reflect the
           engagement state at the time the snapshot was created and are provided for diligence review only.
         </footer>

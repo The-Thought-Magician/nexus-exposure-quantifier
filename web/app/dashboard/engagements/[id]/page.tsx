@@ -61,7 +61,7 @@ export function EngagementSubNav({ id, active }: { id: string; active?: string }
   const pathname = usePathname()
   const base = `/dashboard/engagements/${id}`
   return (
-    <div className="-mx-1 flex gap-1 overflow-x-auto border-b border-slate-800 pb-px">
+    <div className="-mx-1 flex gap-1 overflow-x-auto border-b border-stone-800 pb-px">
       {SUB_TABS.map(([label, suffix]) => {
         const href = `${base}${suffix}`
         const isActive = active !== undefined ? active === suffix : pathname === href
@@ -71,8 +71,8 @@ export function EngagementSubNav({ id, active }: { id: string; active?: string }
             href={href}
             className={`whitespace-nowrap rounded-t-lg px-3 py-2 text-sm font-medium transition-colors ${
               isActive
-                ? 'border-b-2 border-violet-500 text-violet-300'
-                : 'border-b-2 border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-b-2 border-blue-500 text-blue-300'
+                : 'border-b-2 border-transparent text-stone-400 hover:text-stone-200'
             }`}
           >
             {label}
@@ -193,7 +193,7 @@ export default function EngagementSummaryPage() {
             Retry
           </Button>
         </div>
-        <Link href="/dashboard/engagements" className="text-sm text-violet-300 hover:text-violet-200">
+        <Link href="/dashboard/engagements" className="text-sm text-blue-300 hover:text-blue-200">
           ← Back to engagements
         </Link>
       </div>
@@ -210,7 +210,7 @@ export default function EngagementSummaryPage() {
   // Simple stacked composition bar (tax / penalty / interest) as SVG-free divs.
   const compTotal = tax + penalty + interest || 1
   const segs = [
-    { label: 'Tax', value: tax, cls: 'bg-violet-500' },
+    { label: 'Tax', value: tax, cls: 'bg-blue-500' },
     { label: 'Penalty', value: penalty, cls: 'bg-amber-500' },
     { label: 'Interest', value: interest, cls: 'bg-sky-500' },
   ]
@@ -218,18 +218,18 @@ export default function EngagementSummaryPage() {
   return (
     <div className="space-y-6">
       <div>
-        <Link href="/dashboard/engagements" className="text-sm text-slate-500 hover:text-slate-300">
+        <Link href="/dashboard/engagements" className="text-sm text-stone-500 hover:text-stone-300">
           ← Engagements
         </Link>
         <div className="mt-2 flex flex-wrap items-start justify-between gap-4">
           <div>
             <div className="flex items-center gap-3">
-              <h1 className="text-2xl font-semibold text-slate-100">{eng.name}</h1>
+              <h1 className="text-2xl font-semibold text-stone-100">{eng.name}</h1>
               <Badge tone={eng.is_locked ? 'slate' : 'blue'}>{eng.status || 'draft'}</Badge>
               {eng.is_locked ? <Badge tone="amber">🔒 locked</Badge> : null}
             </div>
-            {eng.description ? <p className="mt-1 max-w-2xl text-sm text-slate-500">{eng.description}</p> : null}
-            <p className="mt-1 text-xs text-slate-600">
+            {eng.description ? <p className="mt-1 max-w-2xl text-sm text-stone-500">{eng.description}</p> : null}
+            <p className="mt-1 text-xs text-stone-600">
               As of {fmtDate(eng.as_of_date)} · Updated {fmtDate(eng.updated_at)}
             </p>
           </div>
@@ -256,7 +256,7 @@ export default function EngagementSummaryPage() {
         <div className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">{error}</div>
       ) : null}
       {eng.is_locked ? (
-        <div className="rounded-lg border border-slate-700 bg-slate-800/40 px-4 py-3 text-sm text-slate-400">
+        <div className="rounded-lg border border-stone-700 bg-stone-800/40 px-4 py-3 text-sm text-stone-400">
           This engagement is locked. Unlock it to recompute or edit inputs.
         </div>
       ) : null}
@@ -271,16 +271,16 @@ export default function EngagementSummaryPage() {
 
       <Card>
         <CardHeader>
-          <h2 className="text-sm font-semibold text-slate-200">Exposure composition</h2>
+          <h2 className="text-sm font-semibold text-stone-200">Exposure composition</h2>
         </CardHeader>
         <CardBody className="space-y-4">
           {tax + penalty + interest === 0 ? (
-            <p className="text-sm text-slate-500">
-              No exposure computed yet. Add sales lines then run <span className="text-violet-300">Recompute</span>.
+            <p className="text-sm text-stone-500">
+              No exposure computed yet. Add sales lines then run <span className="text-blue-300">Recompute</span>.
             </p>
           ) : (
             <>
-              <div className="flex h-4 w-full overflow-hidden rounded-full bg-slate-800">
+              <div className="flex h-4 w-full overflow-hidden rounded-full bg-stone-800">
                 {segs.map((s) =>
                   s.value > 0 ? (
                     <div
@@ -292,7 +292,7 @@ export default function EngagementSummaryPage() {
                   ) : null,
                 )}
               </div>
-              <div className="flex flex-wrap gap-4 text-xs text-slate-400">
+              <div className="flex flex-wrap gap-4 text-xs text-stone-400">
                 {segs.map((s) => (
                   <div key={s.label} className="flex items-center gap-2">
                     <span className={`inline-block h-2.5 w-2.5 rounded-full ${s.cls}`} />
@@ -307,7 +307,7 @@ export default function EngagementSummaryPage() {
 
       <Card>
         <CardHeader>
-          <h2 className="text-sm font-semibold text-slate-200">Work the engagement</h2>
+          <h2 className="text-sm font-semibold text-stone-200">Work the engagement</h2>
         </CardHeader>
         <CardBody>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
@@ -315,7 +315,7 @@ export default function EngagementSummaryPage() {
               <Link
                 key={label}
                 href={`/dashboard/engagements/${id}${suffix}`}
-                className="rounded-lg border border-slate-800 bg-slate-950/40 px-4 py-3 text-sm font-medium text-slate-300 transition-colors hover:border-violet-500/40 hover:text-violet-200"
+                className="rounded-lg border border-stone-800 bg-stone-950/40 px-4 py-3 text-sm font-medium text-stone-300 transition-colors hover:border-blue-500/40 hover:text-blue-200"
               >
                 {label}
               </Link>
@@ -344,29 +344,29 @@ export default function EngagementSummaryPage() {
             <div className="rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-300">{formError}</div>
           ) : null}
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Name</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Name</label>
             <input
               value={form.name}
               onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
             />
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">As-of date</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">As-of date</label>
               <input
                 type="date"
                 value={form.as_of_date}
                 onChange={(e) => setForm((f) => ({ ...f, as_of_date: e.target.value }))}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Status</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Status</label>
               <select
                 value={form.status}
                 onChange={(e) => setForm((f) => ({ ...f, status: e.target.value }))}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
               >
                 <option value="">draft</option>
                 <option value="active">active</option>
@@ -376,12 +376,12 @@ export default function EngagementSummaryPage() {
             </div>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Description</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Description</label>
             <textarea
               value={form.description}
               onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))}
               rows={3}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
             />
           </div>
         </div>

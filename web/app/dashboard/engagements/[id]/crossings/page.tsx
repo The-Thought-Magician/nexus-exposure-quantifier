@@ -196,15 +196,15 @@ export default function CrossingsPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 text-xs text-slate-500">
-            <Link href={`/dashboard/engagements/${engagementId}`} className="hover:text-violet-300">
+          <div className="flex items-center gap-2 text-xs text-stone-500">
+            <Link href={`/dashboard/engagements/${engagementId}`} className="hover:text-blue-300">
               Engagement
             </Link>
             <span>/</span>
-            <span className="text-slate-400">Crossings</span>
+            <span className="text-stone-400">Crossings</span>
           </div>
-          <h1 className="mt-1 text-2xl font-semibold text-slate-100">Nexus Crossings</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <h1 className="mt-1 text-2xl font-semibold text-stone-100">Nexus Crossings</h1>
+          <p className="mt-1 text-sm text-stone-500">
             Per-state economic-nexus threshold crossing dates and the running-measure timeline that tripped each one.
           </p>
         </div>
@@ -236,20 +236,20 @@ export default function CrossingsPage() {
 
       <Card>
         <CardHeader className="flex flex-wrap items-center justify-between gap-3">
-          <h2 className="text-sm font-semibold text-slate-200">Per-state crossings</h2>
+          <h2 className="text-sm font-semibold text-stone-200">Per-state crossings</h2>
           <div className="flex flex-wrap items-center gap-2">
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Filter state…"
-              className="w-36 rounded-lg border border-slate-700 bg-slate-950 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-600 focus:border-violet-500 focus:outline-none"
+              className="w-36 rounded-lg border border-stone-700 bg-stone-950 px-3 py-1.5 text-sm text-stone-200 placeholder:text-stone-600 focus:border-blue-500 focus:outline-none"
             />
-            <label className="flex items-center gap-2 text-sm text-slate-400">
+            <label className="flex items-center gap-2 text-sm text-stone-400">
               <input
                 type="checkbox"
                 checked={onlyCrossed}
                 onChange={(e) => setOnlyCrossed(e.target.checked)}
-                className="h-4 w-4 rounded border-slate-700 bg-slate-950 text-violet-600 focus:ring-violet-500"
+                className="h-4 w-4 rounded border-stone-700 bg-stone-950 text-blue-600 focus:ring-blue-500"
               />
               Crossed only
             </label>
@@ -269,7 +269,7 @@ export default function CrossingsPage() {
               }
             />
           ) : filtered.length === 0 ? (
-            <div className="px-5 py-10 text-center text-sm text-slate-500">No states match your filters.</div>
+            <div className="px-5 py-10 text-center text-sm text-stone-500">No states match your filters.</div>
           ) : (
             <Table>
               <THead>
@@ -286,7 +286,7 @@ export default function CrossingsPage() {
               <TBody>
                 {filtered.map((r) => (
                   <TR key={r.id || r.state} className="cursor-pointer" onClick={() => openDetail(r.state)}>
-                    <TD className="font-semibold text-slate-100">{r.state}</TD>
+                    <TD className="font-semibold text-stone-100">{r.state}</TD>
                     <TD>
                       {r.has_crossed ? (
                         <Badge tone="red">Nexus established</Badge>
@@ -294,16 +294,16 @@ export default function CrossingsPage() {
                         <Badge tone="green">Below threshold</Badge>
                       )}
                     </TD>
-                    <TD className="text-slate-300">{fmtDate(r.crossing_date)}</TD>
+                    <TD className="text-stone-300">{fmtDate(r.crossing_date)}</TD>
                     <TD>
                       {r.tripping_test ? (
                         <Badge tone="violet">{r.tripping_test}</Badge>
                       ) : (
-                        <span className="text-slate-500">—</span>
+                        <span className="text-stone-500">—</span>
                       )}
                     </TD>
                     <TD className="text-right tabular-nums">{money(r.measure_at_crossing)}</TD>
-                    <TD className="text-right tabular-nums text-slate-400">{money(r.threshold_used)}</TD>
+                    <TD className="text-right tabular-nums text-stone-400">{money(r.threshold_used)}</TD>
                     <TD className="text-right">
                       <Button
                         size="sm"
@@ -363,13 +363,13 @@ export default function CrossingsPage() {
               <Stat label="Threshold" value={money(detail.threshold_used)} tone="amber" />
             </div>
             {detail.tripping_test ? (
-              <p className="text-sm text-slate-400">
+              <p className="text-sm text-stone-400">
                 Tripped by <Badge tone="violet">{detail.tripping_test}</Badge> test.
               </p>
             ) : null}
             {detail.timeline && detail.timeline.length > 0 ? (
               <div>
-                <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-stone-500">
                   Running measure over period
                 </h3>
                 <Sparkline timeline={detail.timeline} threshold={detail.threshold_used} />
@@ -386,12 +386,12 @@ export default function CrossingsPage() {
                     <TBody>
                       {detail.timeline.map((p, i) => (
                         <TR key={i} className={p.crossed ? 'bg-red-500/5' : ''}>
-                          <TD className="text-slate-300">{pointLabel(p, i)}</TD>
+                          <TD className="text-stone-300">{pointLabel(p, i)}</TD>
                           <TD className="text-right tabular-nums">{money(pointMeasure(p))}</TD>
-                          <TD className="text-right tabular-nums text-slate-400">
+                          <TD className="text-right tabular-nums text-stone-400">
                             {p.transactions ?? '—'}
                           </TD>
-                          <TD>{p.crossed ? <Badge tone="red">Crossed</Badge> : <span className="text-slate-600">—</span>}</TD>
+                          <TD>{p.crossed ? <Badge tone="red">Crossed</Badge> : <span className="text-stone-600">—</span>}</TD>
                         </TR>
                       ))}
                     </TBody>
@@ -399,7 +399,7 @@ export default function CrossingsPage() {
                 </div>
               </div>
             ) : (
-              <p className="text-sm text-slate-500">No timeline points recorded for this state.</p>
+              <p className="text-sm text-stone-500">No timeline points recorded for this state.</p>
             )}
           </div>
         ) : null}

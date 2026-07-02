@@ -225,15 +225,15 @@ export default function ImportsPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 text-xs text-slate-500">
-            <Link href={`/dashboard/engagements/${engagementId}`} className="hover:text-violet-300">
+          <div className="flex items-center gap-2 text-xs text-stone-500">
+            <Link href={`/dashboard/engagements/${engagementId}`} className="hover:text-blue-300">
               Engagement
             </Link>
             <span>/</span>
-            <span className="text-slate-400">Imports</span>
+            <span className="text-stone-400">Imports</span>
           </div>
-          <h1 className="mt-1 text-2xl font-semibold text-slate-100">Data Imports</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <h1 className="mt-1 text-2xl font-semibold text-stone-100">Data Imports</h1>
+          <p className="mt-1 text-sm text-stone-500">
             Load transaction data via CSV, connectors, or seed a realistic multi-state sample to test nexus exposure.
           </p>
         </div>
@@ -270,18 +270,18 @@ export default function ImportsPage() {
 
       <Card>
         <CardHeader className="flex flex-wrap items-center justify-between gap-3">
-          <h2 className="text-sm font-semibold text-slate-200">Import jobs</h2>
+          <h2 className="text-sm font-semibold text-stone-200">Import jobs</h2>
           <div className="flex flex-wrap items-center gap-2">
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search jobs…"
-              className="w-44 rounded-lg border border-slate-700 bg-slate-950 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-600 focus:border-violet-500 focus:outline-none"
+              className="w-44 rounded-lg border border-stone-700 bg-stone-950 px-3 py-1.5 text-sm text-stone-200 placeholder:text-stone-600 focus:border-blue-500 focus:outline-none"
             />
             <select
               value={sourceFilter}
               onChange={(e) => setSourceFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-1.5 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+              className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-1.5 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
             >
               <option value="all">All sources</option>
               {sources.map((s) => (
@@ -309,7 +309,7 @@ export default function ImportsPage() {
               }
             />
           ) : filtered.length === 0 ? (
-            <div className="px-5 py-10 text-center text-sm text-slate-500">No jobs match your filters.</div>
+            <div className="px-5 py-10 text-center text-sm text-stone-500">No jobs match your filters.</div>
           ) : (
             <Table>
               <THead>
@@ -336,10 +336,10 @@ export default function ImportsPage() {
                       {j.error_count > 0 ? (
                         <span className="text-red-300">{j.error_count.toLocaleString()}</span>
                       ) : (
-                        <span className="text-slate-500">0</span>
+                        <span className="text-stone-500">0</span>
                       )}
                     </TD>
-                    <TD className="text-slate-400">{fmtDate(j.created_at)}</TD>
+                    <TD className="text-stone-400">{fmtDate(j.created_at)}</TD>
                     <TD className="text-right">
                       <Button
                         size="sm"
@@ -376,24 +376,24 @@ export default function ImportsPage() {
         }
       >
         <div className="space-y-4">
-          <p className="text-sm text-slate-400">
-            Expected columns: <code className="text-violet-300">sale_date, state, amount</code> and optional{' '}
-            <code className="text-violet-300">jurisdiction, is_taxable, is_marketplace, transaction_ref, product_category</code>.
+          <p className="text-sm text-stone-400">
+            Expected columns: <code className="text-blue-300">sale_date, state, amount</code> and optional{' '}
+            <code className="text-blue-300">jurisdiction, is_taxable, is_marketplace, transaction_ref, product_category</code>.
           </p>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
               Choose file
             </label>
             <input
               type="file"
               accept=".csv,text/csv"
               onChange={(e) => e.target.files?.[0] && onFile(e.target.files[0])}
-              className="block w-full text-sm text-slate-400 file:mr-3 file:rounded-lg file:border-0 file:bg-violet-600 file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-white hover:file:bg-violet-500"
+              className="block w-full text-sm text-stone-400 file:mr-3 file:rounded-lg file:border-0 file:bg-blue-600 file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-white hover:file:bg-blue-500"
             />
-            {csvFileName ? <p className="mt-1 text-xs text-slate-500">Loaded: {csvFileName}</p> : null}
+            {csvFileName ? <p className="mt-1 text-xs text-stone-500">Loaded: {csvFileName}</p> : null}
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
               Or paste CSV
             </label>
             <textarea
@@ -401,7 +401,7 @@ export default function ImportsPage() {
               onChange={(e) => setCsvText(e.target.value)}
               rows={8}
               placeholder="sale_date,state,amount,is_taxable&#10;2024-01-15,CA,1200.00,true"
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 font-mono text-xs text-slate-200 placeholder:text-slate-600 focus:border-violet-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 font-mono text-xs text-stone-200 placeholder:text-stone-600 focus:border-blue-500 focus:outline-none"
             />
           </div>
           {csvErr ? (
@@ -430,11 +430,11 @@ export default function ImportsPage() {
       >
         <div className="space-y-4">
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Source</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Source</label>
             <select
               value={connSource}
               onChange={(e) => setConnSource(e.target.value)}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
             >
               {CONNECTORS.map((c) => (
                 <option key={c} value={c}>
@@ -444,33 +444,33 @@ export default function ImportsPage() {
             </select>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
               API key (optional)
             </label>
             <input
               value={connApiKey}
               onChange={(e) => setConnApiKey(e.target.value)}
               placeholder="sk_live_…"
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-violet-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-blue-500 focus:outline-none"
             />
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">From</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">From</label>
               <input
                 type="date"
                 value={connFrom}
                 onChange={(e) => setConnFrom(e.target.value)}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">To</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">To</label>
               <input
                 type="date"
                 value={connTo}
                 onChange={(e) => setConnTo(e.target.value)}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
               />
             </div>
           </div>
@@ -501,18 +501,18 @@ export default function ImportsPage() {
             {errLoadErr}
           </div>
         ) : errRows.length === 0 ? (
-          <p className="py-6 text-center text-sm text-slate-500">No error rows recorded for this job.</p>
+          <p className="py-6 text-center text-sm text-stone-500">No error rows recorded for this job.</p>
         ) : (
           <div className="max-h-96 space-y-3 overflow-y-auto">
             {errRows.map((er) => (
-              <div key={er.id} className="rounded-lg border border-slate-800 bg-slate-950/60 p-3">
+              <div key={er.id} className="rounded-lg border border-stone-800 bg-stone-950/60 p-3">
                 <div className="flex items-center justify-between">
                   <Badge tone="red">Row {er.row_number}</Badge>
-                  <span className="text-xs text-slate-500">{fmtDate(er.created_at)}</span>
+                  <span className="text-xs text-stone-500">{fmtDate(er.created_at)}</span>
                 </div>
-                <p className="mt-2 text-sm text-slate-300">{er.message}</p>
+                <p className="mt-2 text-sm text-stone-300">{er.message}</p>
                 {er.raw_row ? (
-                  <pre className="mt-2 overflow-x-auto rounded bg-slate-900 p-2 text-xs text-slate-500">
+                  <pre className="mt-2 overflow-x-auto rounded bg-stone-900 p-2 text-xs text-stone-500">
                     {JSON.stringify(er.raw_row, null, 2)}
                   </pre>
                 ) : null}

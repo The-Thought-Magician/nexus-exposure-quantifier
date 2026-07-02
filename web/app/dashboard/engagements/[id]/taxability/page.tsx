@@ -227,8 +227,8 @@ export default function TaxabilityPage({ params }: { params: Promise<{ id: strin
     <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-xl font-semibold text-slate-100">Product Taxability Matrix</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <h1 className="text-xl font-semibold text-stone-100">Product Taxability Matrix</h1>
+          <p className="mt-1 text-sm text-stone-500">
             Map each product category to a taxable/exempt treatment per state. Overrides feed exposure computations.
           </p>
         </div>
@@ -271,12 +271,12 @@ export default function TaxabilityPage({ params }: { params: Promise<{ id: strin
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search state or category…"
-                className="w-56 rounded-lg border border-slate-700 bg-slate-950 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-600 focus:border-violet-500 focus:outline-none"
+                className="w-56 rounded-lg border border-stone-700 bg-stone-950 px-3 py-1.5 text-sm text-stone-200 placeholder:text-stone-600 focus:border-blue-500 focus:outline-none"
               />
               <select
                 value={stateFilter}
                 onChange={(e) => setStateFilter(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-1.5 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-1.5 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
               >
                 <option value="">All states</option>
                 {states.map((s) => (
@@ -285,13 +285,13 @@ export default function TaxabilityPage({ params }: { params: Promise<{ id: strin
                   </option>
                 ))}
               </select>
-              <div className="inline-flex overflow-hidden rounded-lg border border-slate-700">
+              <div className="inline-flex overflow-hidden rounded-lg border border-stone-700">
                 {(['all', 'taxable', 'exempt'] as const).map((t) => (
                   <button
                     key={t}
                     onClick={() => setTaxableFilter(t)}
                     className={`px-3 py-1.5 text-xs capitalize transition-colors ${
-                      taxableFilter === t ? 'bg-violet-600 text-white' : 'bg-slate-950 text-slate-400 hover:text-slate-200'
+                      taxableFilter === t ? 'bg-blue-600 text-white' : 'bg-stone-950 text-stone-400 hover:text-stone-200'
                     }`}
                   >
                     {t}
@@ -320,40 +320,40 @@ export default function TaxabilityPage({ params }: { params: Promise<{ id: strin
                 <div className="space-y-8">
                   {/* Matrix pivot */}
                   <div>
-                    <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-stone-500">
                       Matrix — state × category
                     </div>
-                    <div className="overflow-x-auto rounded-xl border border-slate-800">
+                    <div className="overflow-x-auto rounded-xl border border-stone-800">
                       <table className="w-full border-collapse text-sm">
-                        <thead className="bg-slate-900/80">
+                        <thead className="bg-stone-900/80">
                           <tr>
-                            <th className="sticky left-0 z-10 bg-slate-900/80 px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+                            <th className="sticky left-0 z-10 bg-stone-900/80 px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-stone-500">
                               State
                             </th>
                             {matrix.filteredCats.map((c) => (
                               <th
                                 key={c}
-                                className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500"
+                                className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-stone-500"
                               >
                                 {c}
                               </th>
                             ))}
                           </tr>
                         </thead>
-                        <tbody className="divide-y divide-slate-800">
+                        <tbody className="divide-y divide-stone-800">
                           {matrix.filteredStates.map((st) => {
                             const rate = rateByState.get(st)
                             return (
-                              <tr key={st} className="hover:bg-slate-800/40">
-                                <td className="sticky left-0 z-10 bg-slate-900 px-4 py-3">
-                                  <div className="font-medium text-slate-100">{st}</div>
-                                  <div className="text-xs text-slate-500">{rate ? pct(rate.avg_combined_rate ?? rate.base_rate) : 'no rate'}</div>
+                              <tr key={st} className="hover:bg-stone-800/40">
+                                <td className="sticky left-0 z-10 bg-stone-900 px-4 py-3">
+                                  <div className="font-medium text-stone-100">{st}</div>
+                                  <div className="text-xs text-stone-500">{rate ? pct(rate.avg_combined_rate ?? rate.base_rate) : 'no rate'}</div>
                                 </td>
                                 {matrix.filteredCats.map((c) => {
                                   const cell = matrix.m.get(matrix.key(st, c))
                                   if (!cell)
                                     return (
-                                      <td key={c} className="px-4 py-3 text-slate-700">
+                                      <td key={c} className="px-4 py-3 text-stone-700">
                                         —
                                       </td>
                                     )
@@ -368,7 +368,7 @@ export default function TaxabilityPage({ params }: { params: Promise<{ id: strin
                                           {cell.is_taxable ? 'Taxable' : 'Exempt'}
                                         </Badge>
                                         {num(cell.rate_override) !== null ? (
-                                          <span className="text-xs text-violet-300">
+                                          <span className="text-xs text-blue-300">
                                             override {pct(cell.rate_override)}
                                           </span>
                                         ) : null}
@@ -386,7 +386,7 @@ export default function TaxabilityPage({ params }: { params: Promise<{ id: strin
 
                   {/* Detail rows */}
                   <div>
-                    <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-stone-500">
                       All rules ({filtered.length})
                     </div>
                     <Table>
@@ -405,15 +405,15 @@ export default function TaxabilityPage({ params }: { params: Promise<{ id: strin
                           const rate = rateByState.get(r.state)
                           return (
                             <TR key={r.id}>
-                              <TD className="font-medium text-slate-100">{r.state}</TD>
+                              <TD className="font-medium text-stone-100">{r.state}</TD>
                               <TD>{r.product_category}</TD>
                               <TD>
                                 <Badge tone={r.is_taxable ? 'amber' : 'green'}>
                                   {r.is_taxable ? 'Taxable' : 'Exempt'}
                                 </Badge>
                               </TD>
-                              <TD>{num(r.rate_override) !== null ? pct(r.rate_override) : <span className="text-slate-600">inherit</span>}</TD>
-                              <TD className="text-slate-400">{rate ? pct(rate.avg_combined_rate ?? rate.base_rate) : '—'}</TD>
+                              <TD>{num(r.rate_override) !== null ? pct(r.rate_override) : <span className="text-stone-600">inherit</span>}</TD>
+                              <TD className="text-stone-400">{rate ? pct(rate.avg_combined_rate ?? rate.base_rate) : '—'}</TD>
                               <TD className="text-right">
                                 <div className="flex justify-end gap-1">
                                   <Button variant="ghost" size="sm" onClick={() => openEdit(r)}>
@@ -455,18 +455,18 @@ export default function TaxabilityPage({ params }: { params: Promise<{ id: strin
         <div className="space-y-4">
           {formError ? <p className="text-sm text-red-300">{formError}</p> : null}
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">State</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">State</label>
             <input
               value={form.state}
               onChange={(e) => setForm((f) => ({ ...f, state: e.target.value }))}
               placeholder="e.g. CA"
               maxLength={2}
               disabled={!!editing}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm uppercase text-slate-200 placeholder:text-slate-600 focus:border-violet-500 focus:outline-none disabled:opacity-60"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm uppercase text-stone-200 placeholder:text-stone-600 focus:border-blue-500 focus:outline-none disabled:opacity-60"
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
               Product category
             </label>
             <input
@@ -475,7 +475,7 @@ export default function TaxabilityPage({ params }: { params: Promise<{ id: strin
               placeholder="e.g. SaaS"
               list="taxability-categories"
               disabled={!!editing}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-violet-500 focus:outline-none disabled:opacity-60"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-blue-500 focus:outline-none disabled:opacity-60"
             />
             <datalist id="taxability-categories">
               {[...new Set([...CATEGORY_SUGGESTIONS, ...categories])].map((c) => (
@@ -484,18 +484,18 @@ export default function TaxabilityPage({ params }: { params: Promise<{ id: strin
             </datalist>
           </div>
           <div className="flex items-center gap-3">
-            <label className="flex items-center gap-2 text-sm text-slate-300">
+            <label className="flex items-center gap-2 text-sm text-stone-300">
               <input
                 type="checkbox"
                 checked={form.is_taxable}
                 onChange={(e) => setForm((f) => ({ ...f, is_taxable: e.target.checked }))}
-                className="h-4 w-4 rounded border-slate-600 bg-slate-950 text-violet-600 focus:ring-violet-500"
+                className="h-4 w-4 rounded border-stone-600 bg-stone-950 text-blue-600 focus:ring-blue-500"
               />
               Taxable in this state
             </label>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
               Rate override (optional)
             </label>
             <input
@@ -503,9 +503,9 @@ export default function TaxabilityPage({ params }: { params: Promise<{ id: strin
               onChange={(e) => setForm((f) => ({ ...f, rate_override: e.target.value }))}
               placeholder="e.g. 0.0725 or 7.25 — leave blank to inherit"
               inputMode="decimal"
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-violet-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-blue-500 focus:outline-none"
             />
-            <p className="mt-1 text-xs text-slate-600">
+            <p className="mt-1 text-xs text-stone-600">
               Leave blank to use the state&apos;s combined rate from the tax-rate library.
             </p>
           </div>

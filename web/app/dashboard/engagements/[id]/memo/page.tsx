@@ -38,13 +38,13 @@ function fmtMoney(v: unknown): string {
 // so we render known keys nicely and fall back to sections/paragraphs.
 function MemoContent({ content }: { content: unknown }) {
   if (content == null) {
-    return <p className="text-sm text-slate-500">This memo has no rendered body.</p>
+    return <p className="text-sm text-stone-500">This memo has no rendered body.</p>
   }
   if (typeof content === 'string') {
     return (
       <div className="space-y-3">
         {content.split(/\n{2,}/).map((p, i) => (
-          <p key={i} className="whitespace-pre-wrap text-sm leading-relaxed text-slate-300">
+          <p key={i} className="whitespace-pre-wrap text-sm leading-relaxed text-stone-300">
             {p}
           </p>
         ))}
@@ -70,8 +70,8 @@ function MemoContent({ content }: { content: unknown }) {
       <div className="space-y-5">
         {typeof obj.summary === 'string' ? (
           <div>
-            <h4 className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">Summary</h4>
-            <p className="whitespace-pre-wrap text-sm leading-relaxed text-slate-300">{obj.summary}</p>
+            <h4 className="mb-1 text-xs font-semibold uppercase tracking-wide text-stone-500">Summary</h4>
+            <p className="whitespace-pre-wrap text-sm leading-relaxed text-stone-300">{obj.summary}</p>
           </div>
         ) : null}
 
@@ -93,16 +93,16 @@ function MemoContent({ content }: { content: unknown }) {
 
         {Array.isArray(perState) && perState.length ? (
           <div>
-            <h4 className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Per-state</h4>
-            <div className="overflow-x-auto rounded-lg border border-slate-800">
+            <h4 className="mb-2 text-xs font-semibold uppercase tracking-wide text-stone-500">Per-state</h4>
+            <div className="overflow-x-auto rounded-lg border border-stone-800">
               <table className="w-full text-sm">
-                <tbody className="divide-y divide-slate-800">
+                <tbody className="divide-y divide-stone-800">
                   {perState.map((row, i) => {
                     const r = row as Record<string, unknown>
                     return (
-                      <tr key={i} className="hover:bg-slate-800/40">
-                        <td className="px-3 py-2 font-medium text-slate-100">{String(r.state ?? '')}</td>
-                        <td className="px-3 py-2 text-right text-slate-300">{fmtMoney(r.total ?? r.total_exposure)}</td>
+                      <tr key={i} className="hover:bg-stone-800/40">
+                        <td className="px-3 py-2 font-medium text-stone-100">{String(r.state ?? '')}</td>
+                        <td className="px-3 py-2 text-right text-stone-300">{fmtMoney(r.total ?? r.total_exposure)}</td>
                       </tr>
                     )
                   })}
@@ -117,19 +117,19 @@ function MemoContent({ content }: { content: unknown }) {
           .filter(([k, v]) => !['summary', 'totals', 'rollup', 'sections', 'states', 'per_state'].includes(k) && (typeof v === 'string' || typeof v === 'number'))
           .map(([k, v]) => (
             <div key={k}>
-              <h4 className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">{k.replace(/_/g, ' ')}</h4>
-              <p className="whitespace-pre-wrap text-sm leading-relaxed text-slate-300">{String(v)}</p>
+              <h4 className="mb-1 text-xs font-semibold uppercase tracking-wide text-stone-500">{k.replace(/_/g, ' ')}</h4>
+              <p className="whitespace-pre-wrap text-sm leading-relaxed text-stone-300">{String(v)}</p>
             </div>
           ))}
       </div>
     )
   }
-  return <pre className="overflow-x-auto rounded-lg bg-slate-950 p-3 text-xs text-slate-400">{JSON.stringify(content, null, 2)}</pre>
+  return <pre className="overflow-x-auto rounded-lg bg-stone-950 p-3 text-xs text-stone-400">{JSON.stringify(content, null, 2)}</pre>
 }
 
 function MemoSection({ section }: { section: unknown }) {
   if (typeof section === 'string') {
-    return <p className="whitespace-pre-wrap text-sm leading-relaxed text-slate-300">{section}</p>
+    return <p className="whitespace-pre-wrap text-sm leading-relaxed text-stone-300">{section}</p>
   }
   if (section && typeof section === 'object') {
     const s = section as Record<string, unknown>
@@ -138,12 +138,12 @@ function MemoSection({ section }: { section: unknown }) {
     const items = s.items as unknown[] | undefined
     return (
       <div>
-        {heading ? <h4 className="mb-1 text-sm font-semibold text-slate-200">{heading}</h4> : null}
+        {heading ? <h4 className="mb-1 text-sm font-semibold text-stone-200">{heading}</h4> : null}
         {typeof bodyRaw === 'string' ? (
-          <p className="whitespace-pre-wrap text-sm leading-relaxed text-slate-300">{bodyRaw}</p>
+          <p className="whitespace-pre-wrap text-sm leading-relaxed text-stone-300">{bodyRaw}</p>
         ) : null}
         {Array.isArray(items) ? (
-          <ul className="ml-4 list-disc space-y-1 text-sm text-slate-300">
+          <ul className="ml-4 list-disc space-y-1 text-sm text-stone-300">
             {items.map((it, i) => (
               <li key={i}>{typeof it === 'string' ? it : JSON.stringify(it)}</li>
             ))}
@@ -247,8 +247,8 @@ export default function MemoPage({ params }: { params: Promise<{ id: string }> }
     <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-xl font-semibold text-slate-100">Exposure Memos</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <h1 className="text-xl font-semibold text-stone-100">Exposure Memos</h1>
+          <p className="mt-1 text-sm text-stone-500">
             Generate a diligence-ready exposure memo from the current computed results. Consolidated or single-state
             scope.
           </p>
@@ -293,7 +293,7 @@ export default function MemoPage({ params }: { params: Promise<{ id: string }> }
           <div className="grid gap-6 lg:grid-cols-3">
             <Card className="lg:col-span-1">
               <CardHeader>
-                <h2 className="text-sm font-semibold text-slate-200">Memo library</h2>
+                <h2 className="text-sm font-semibold text-stone-200">Memo library</h2>
               </CardHeader>
               <CardBody className="space-y-2">
                 {memos.map((m) => (
@@ -301,22 +301,22 @@ export default function MemoPage({ params }: { params: Promise<{ id: string }> }
                     key={m.id}
                     className={`flex items-start justify-between gap-2 rounded-lg border px-3 py-2 transition-colors ${
                       selected?.id === m.id
-                        ? 'border-violet-500/50 bg-violet-500/10'
-                        : 'border-slate-800 bg-slate-950/40 hover:border-slate-700'
+                        ? 'border-blue-500/50 bg-blue-500/10'
+                        : 'border-stone-800 bg-stone-950/40 hover:border-stone-700'
                     }`}
                   >
                     <button className="min-w-0 flex-1 text-left" onClick={() => openMemo(m)}>
-                      <div className="truncate text-sm font-medium text-slate-100">{m.title}</div>
+                      <div className="truncate text-sm font-medium text-stone-100">{m.title}</div>
                       <div className="mt-1 flex items-center gap-2">
                         <Badge tone={m.scope === 'state' ? 'blue' : 'violet'}>
                           {m.scope === 'state' ? m.state ?? 'State' : 'Consolidated'}
                         </Badge>
-                        <span className="text-xs text-slate-500">{fmtDate(m.created_at)}</span>
+                        <span className="text-xs text-stone-500">{fmtDate(m.created_at)}</span>
                       </div>
                     </button>
                     <button
                       onClick={() => remove(m)}
-                      className="shrink-0 text-slate-600 transition-colors hover:text-red-300"
+                      className="shrink-0 text-stone-600 transition-colors hover:text-red-300"
                       title="Delete memo"
                       aria-label="Delete memo"
                     >
@@ -329,7 +329,7 @@ export default function MemoPage({ params }: { params: Promise<{ id: string }> }
 
             <Card className="lg:col-span-2">
               <CardHeader className="flex flex-wrap items-center justify-between gap-2">
-                <h2 className="text-sm font-semibold text-slate-200">
+                <h2 className="text-sm font-semibold text-stone-200">
                   {selected ? selected.title : 'Select a memo'}
                 </h2>
                 {selected ? (
@@ -338,7 +338,7 @@ export default function MemoPage({ params }: { params: Promise<{ id: string }> }
                       {selected.scope === 'state' ? selected.state ?? 'State' : 'Consolidated'}
                     </Badge>
                     {selected.as_of_date ? (
-                      <span className="text-xs text-slate-500">as of {fmtDate(selected.as_of_date)}</span>
+                      <span className="text-xs text-stone-500">as of {fmtDate(selected.as_of_date)}</span>
                     ) : null}
                     <Button variant="ghost" size="sm" onClick={() => remove(selected)}>
                       Delete
@@ -380,14 +380,14 @@ export default function MemoPage({ params }: { params: Promise<{ id: string }> }
         <div className="space-y-4">
           {genErr ? <p className="text-sm text-red-300">{genErr}</p> : null}
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Scope</label>
-            <div className="inline-flex overflow-hidden rounded-lg border border-slate-700">
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Scope</label>
+            <div className="inline-flex overflow-hidden rounded-lg border border-stone-700">
               {(['consolidated', 'state'] as const).map((s) => (
                 <button
                   key={s}
                   onClick={() => setGenForm((f) => ({ ...f, scope: s }))}
                   className={`px-4 py-1.5 text-sm capitalize transition-colors ${
-                    genForm.scope === s ? 'bg-violet-600 text-white' : 'bg-slate-950 text-slate-400 hover:text-slate-200'
+                    genForm.scope === s ? 'bg-blue-600 text-white' : 'bg-stone-950 text-stone-400 hover:text-stone-200'
                   }`}
                 >
                   {s}
@@ -398,29 +398,29 @@ export default function MemoPage({ params }: { params: Promise<{ id: string }> }
 
           {genForm.scope === 'state' ? (
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">State</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">State</label>
               <input
                 value={genForm.state}
                 onChange={(e) => setGenForm((f) => ({ ...f, state: e.target.value }))}
                 placeholder="e.g. CA"
                 maxLength={2}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm uppercase text-slate-200 placeholder:text-slate-600 focus:border-violet-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm uppercase text-stone-200 placeholder:text-stone-600 focus:border-blue-500 focus:outline-none"
               />
             </div>
           ) : null}
 
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
               Title (optional)
             </label>
             <input
               value={genForm.title}
               onChange={(e) => setGenForm((f) => ({ ...f, title: e.target.value }))}
               placeholder="Auto-generated if left blank"
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-violet-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-blue-500 focus:outline-none"
             />
           </div>
-          <p className="text-xs text-slate-600">
+          <p className="text-xs text-stone-600">
             The memo captures a point-in-time snapshot of the current computed exposure. Recompute the engagement first
             if data changed.
           </p>

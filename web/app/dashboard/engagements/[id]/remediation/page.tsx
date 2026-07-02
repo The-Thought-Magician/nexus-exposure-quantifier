@@ -70,7 +70,7 @@ const SUB_NAV: { label: string; slug: string }[] = [
 
 function SubNav({ id, active }: { id: string; active: string }) {
   return (
-    <div className="mb-6 flex flex-wrap gap-1 rounded-xl border border-slate-800 bg-slate-900/60 p-1">
+    <div className="mb-6 flex flex-wrap gap-1 rounded-xl border border-stone-800 bg-stone-900/60 p-1">
       {SUB_NAV.map((t) => {
         const href = t.slug ? `/dashboard/engagements/${id}/${t.slug}` : `/dashboard/engagements/${id}`
         const isActive = t.slug === active
@@ -79,7 +79,7 @@ function SubNav({ id, active }: { id: string; active: string }) {
             key={t.slug || 'summary'}
             href={href}
             className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
-              isActive ? 'bg-violet-600 text-white' : 'text-slate-400 hover:bg-slate-800 hover:text-slate-100'
+              isActive ? 'bg-blue-600 text-white' : 'text-stone-400 hover:bg-stone-800 hover:text-stone-100'
             }`}
           >
             {t.label}
@@ -328,12 +328,12 @@ export default function RemediationPage() {
         <div>
           <Link
             href={`/dashboard/engagements/${id}`}
-            className="text-xs text-slate-500 transition-colors hover:text-violet-300"
+            className="text-xs text-stone-500 transition-colors hover:text-blue-300"
           >
             ← Engagement
           </Link>
-          <h1 className="mt-1 text-2xl font-bold text-slate-100">Remediation &amp; Audit Risk</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <h1 className="mt-1 text-2xl font-bold text-stone-100">Remediation &amp; Audit Risk</h1>
+          <p className="mt-1 text-sm text-stone-500">
             Track per-state cleanup work and flag states where VDA windows are closing or contact has already occurred.
           </p>
         </div>
@@ -376,18 +376,18 @@ export default function RemediationPage() {
           <Card>
             <CardHeader>
               <div className="flex items-center justify-between">
-                <h2 className="text-sm font-semibold text-slate-200">Overall remediation progress</h2>
+                <h2 className="text-sm font-semibold text-stone-200">Overall remediation progress</h2>
                 <span className="text-sm font-semibold tabular-nums text-emerald-300">{computedProgress.pct}%</span>
               </div>
             </CardHeader>
             <CardBody>
-              <div className="h-3 w-full overflow-hidden rounded-full bg-slate-800">
+              <div className="h-3 w-full overflow-hidden rounded-full bg-stone-800">
                 <div
                   className="h-full rounded-full bg-emerald-500 transition-all"
                   style={{ width: `${Math.max(2, computedProgress.pct)}%` }}
                 />
               </div>
-              <div className="mt-3 flex flex-wrap gap-4 text-xs text-slate-500">
+              <div className="mt-3 flex flex-wrap gap-4 text-xs text-stone-500">
                 <span>
                   <span className="text-emerald-300">{computedProgress.done}</span> complete
                 </span>
@@ -398,7 +398,7 @@ export default function RemediationPage() {
                   <span className="text-red-300">{computedProgress.blocked}</span> blocked
                 </span>
                 <span>
-                  <span className="text-slate-300">
+                  <span className="text-stone-300">
                     {computedProgress.total - computedProgress.done - computedProgress.inProg - computedProgress.blocked}
                   </span>{' '}
                   not started
@@ -409,7 +409,7 @@ export default function RemediationPage() {
 
           {/* Filters */}
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex flex-wrap gap-1 rounded-lg border border-slate-800 bg-slate-900/60 p-1">
+            <div className="flex flex-wrap gap-1 rounded-lg border border-stone-800 bg-stone-900/60 p-1">
               {(['all', ...STATUSES] as const).map((s) => {
                 const label =
                   s === 'all'
@@ -427,7 +427,7 @@ export default function RemediationPage() {
                     key={s}
                     onClick={() => setStatusFilter(s)}
                     className={`rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
-                      active ? 'bg-violet-600 text-white' : 'text-slate-400 hover:bg-slate-800 hover:text-slate-100'
+                      active ? 'bg-blue-600 text-white' : 'text-stone-400 hover:bg-stone-800 hover:text-stone-100'
                     }`}
                   >
                     {label}
@@ -439,14 +439,14 @@ export default function RemediationPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search state, owner, notes…"
-              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white placeholder:text-slate-500 focus:border-violet-500 focus:outline-none sm:w-72"
+              className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white placeholder:text-stone-500 focus:border-blue-500 focus:outline-none sm:w-72"
             />
           </div>
 
           {/* Remediation items table */}
           <Card>
             <CardHeader>
-              <h2 className="text-sm font-semibold text-slate-200">Remediation tracker</h2>
+              <h2 className="text-sm font-semibold text-stone-200">Remediation tracker</h2>
             </CardHeader>
             {items.length === 0 ? (
               <CardBody>
@@ -459,7 +459,7 @@ export default function RemediationPage() {
               </CardBody>
             ) : filtered.length === 0 ? (
               <CardBody>
-                <p className="py-6 text-center text-sm text-slate-500">No items match the current filters.</p>
+                <p className="py-6 text-center text-sm text-stone-500">No items match the current filters.</p>
               </CardBody>
             ) : (
               <Table>
@@ -483,30 +483,30 @@ export default function RemediationPage() {
                       <TR key={it.id}>
                         <TD>
                           <div className="flex items-center gap-2">
-                            <span className="font-semibold text-slate-100">{it.state}</span>
+                            <span className="font-semibold text-stone-100">{it.state}</span>
                             {flagged && <Badge tone="red">Flagged</Badge>}
                           </div>
                         </TD>
                         <TD>
                           <Badge tone={meta.tone}>{meta.label}</Badge>
                         </TD>
-                        <TD className="text-slate-300">{it.owner || <span className="text-slate-600">—</span>}</TD>
-                        <TD className="text-slate-300">{fmtDate(it.target_date)}</TD>
+                        <TD className="text-stone-300">{it.owner || <span className="text-stone-600">—</span>}</TD>
+                        <TD className="text-stone-300">{fmtDate(it.target_date)}</TD>
                         <TD>
                           {checklist.length > 0 ? (
                             <div className="flex items-center gap-2">
-                              <div className="h-1.5 w-20 overflow-hidden rounded-full bg-slate-800">
+                              <div className="h-1.5 w-20 overflow-hidden rounded-full bg-stone-800">
                                 <div
-                                  className="h-full bg-violet-500"
+                                  className="h-full bg-blue-500"
                                   style={{ width: `${(doneCount / checklist.length) * 100}%` }}
                                 />
                               </div>
-                              <span className="text-xs tabular-nums text-slate-500">
+                              <span className="text-xs tabular-nums text-stone-500">
                                 {doneCount}/{checklist.length}
                               </span>
                             </div>
                           ) : (
-                            <span className="text-xs text-slate-600">—</span>
+                            <span className="text-xs text-stone-600">—</span>
                           )}
                         </TD>
                         <TD className="text-right">
@@ -522,7 +522,7 @@ export default function RemediationPage() {
                                 }
                                 quickStatus(it, map[e.target.value])
                               }}
-                              className="rounded-md border border-slate-700 bg-slate-800 px-2 py-1 text-xs text-white focus:border-violet-500 focus:outline-none"
+                              className="rounded-md border border-stone-700 bg-stone-800 px-2 py-1 text-xs text-white focus:border-blue-500 focus:outline-none"
                             >
                               <option>Not started</option>
                               <option>In progress</option>
@@ -547,8 +547,8 @@ export default function RemediationPage() {
             <CardHeader>
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="text-sm font-semibold text-slate-200">Audit-risk flags</h2>
-                  <p className="mt-0.5 text-xs text-slate-500">
+                  <h2 className="text-sm font-semibold text-stone-200">Audit-risk flags</h2>
+                  <p className="mt-0.5 text-xs text-stone-500">
                     A closed VDA window or prior contact with the state raises audit exposure.
                   </p>
                 </div>
@@ -584,7 +584,7 @@ export default function RemediationPage() {
                     const risk = f.has_prior_contact || !vdaOpen
                     return (
                       <TR key={f.id}>
-                        <TD className="font-semibold text-slate-100">{f.state}</TD>
+                        <TD className="font-semibold text-stone-100">{f.state}</TD>
                         <TD>
                           <Badge tone={vdaOpen ? 'green' : 'red'}>{vdaOpen ? 'Open' : 'Closed'}</Badge>
                         </TD>
@@ -596,8 +596,8 @@ export default function RemediationPage() {
                         <TD>
                           <Badge tone={risk ? 'red' : 'green'}>{risk ? 'Elevated' : 'Low'}</Badge>
                         </TD>
-                        <TD className="max-w-xs truncate text-slate-400">
-                          {f.notes || <span className="text-slate-600">—</span>}
+                        <TD className="max-w-xs truncate text-stone-400">
+                          {f.notes || <span className="text-stone-600">—</span>}
                         </TD>
                         <TD className="text-right">
                           <Button variant="ghost" size="sm" onClick={() => openEditFlag(f)}>
@@ -633,12 +633,12 @@ export default function RemediationPage() {
         <div className="space-y-4">
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">State</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">State</label>
               <select
                 value={form.state}
                 onChange={(e) => setForm((f) => ({ ...f, state: e.target.value }))}
                 disabled={!!itemModal.editing}
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-violet-500 focus:outline-none disabled:opacity-60"
+                className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white focus:border-blue-500 focus:outline-none disabled:opacity-60"
               >
                 <option value="">Select…</option>
                 {US_STATES.map((s) => (
@@ -650,11 +650,11 @@ export default function RemediationPage() {
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">Status</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">Status</label>
               <select
                 value={form.status}
                 onChange={(e) => setForm((f) => ({ ...f, status: e.target.value }))}
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-violet-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white focus:border-blue-500 focus:outline-none"
               >
                 <option value="not_started">Not started</option>
                 <option value="in_progress">In progress</option>
@@ -665,48 +665,48 @@ export default function RemediationPage() {
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">Owner</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">Owner</label>
               <input
                 value={form.owner}
                 onChange={(e) => setForm((f) => ({ ...f, owner: e.target.value }))}
                 placeholder="Assignee"
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white placeholder:text-slate-500 focus:border-violet-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white placeholder:text-stone-500 focus:border-blue-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">Target date</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">Target date</label>
               <input
                 type="date"
                 value={form.target_date}
                 onChange={(e) => setForm((f) => ({ ...f, target_date: e.target.value }))}
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-violet-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white focus:border-blue-500 focus:outline-none"
               />
             </div>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-slate-400">Checklist</label>
-            <div className="space-y-2 rounded-lg border border-slate-800 bg-slate-950/40 p-3">
+            <label className="mb-1 block text-xs font-medium text-stone-400">Checklist</label>
+            <div className="space-y-2 rounded-lg border border-stone-800 bg-stone-950/40 p-3">
               {form.checklist.map((c, idx) => (
-                <label key={idx} className="flex cursor-pointer items-center gap-2 text-sm text-slate-300">
+                <label key={idx} className="flex cursor-pointer items-center gap-2 text-sm text-stone-300">
                   <input
                     type="checkbox"
                     checked={c.done}
                     onChange={() => toggleChecklist(idx)}
-                    className="h-4 w-4 rounded border-slate-600 bg-slate-800 accent-violet-600"
+                    className="h-4 w-4 rounded border-stone-600 bg-stone-800 accent-blue-600"
                   />
-                  <span className={c.done ? 'text-slate-500 line-through' : ''}>{c.label}</span>
+                  <span className={c.done ? 'text-stone-500 line-through' : ''}>{c.label}</span>
                 </label>
               ))}
             </div>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-slate-400">Notes</label>
+            <label className="mb-1 block text-xs font-medium text-stone-400">Notes</label>
             <textarea
               value={form.notes}
               onChange={(e) => setForm((f) => ({ ...f, notes: e.target.value }))}
               rows={3}
               placeholder="Context, blockers, next steps…"
-              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white placeholder:text-slate-500 focus:border-violet-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white placeholder:text-stone-500 focus:border-blue-500 focus:outline-none"
             />
           </div>
         </div>
@@ -730,12 +730,12 @@ export default function RemediationPage() {
       >
         <div className="space-y-4">
           <div>
-            <label className="mb-1 block text-xs font-medium text-slate-400">State</label>
+            <label className="mb-1 block text-xs font-medium text-stone-400">State</label>
             <select
               value={flagForm.state}
               onChange={(e) => setFlagForm((f) => ({ ...f, state: e.target.value }))}
               disabled={!!flagModal.editing}
-              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-violet-500 focus:outline-none disabled:opacity-60"
+              className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white focus:border-blue-500 focus:outline-none disabled:opacity-60"
             >
               <option value="">Select…</option>
               {US_STATES.map((s) => (
@@ -745,32 +745,32 @@ export default function RemediationPage() {
               ))}
             </select>
           </div>
-          <label className="flex cursor-pointer items-center justify-between rounded-lg border border-slate-800 bg-slate-950/40 px-3 py-2.5 text-sm text-slate-300">
+          <label className="flex cursor-pointer items-center justify-between rounded-lg border border-stone-800 bg-stone-950/40 px-3 py-2.5 text-sm text-stone-300">
             <span>VDA window still open</span>
             <input
               type="checkbox"
               checked={flagForm.vda_window}
               onChange={(e) => setFlagForm((f) => ({ ...f, vda_window: e.target.checked }))}
-              className="h-4 w-4 rounded border-slate-600 bg-slate-800 accent-violet-600"
+              className="h-4 w-4 rounded border-stone-600 bg-stone-800 accent-blue-600"
             />
           </label>
-          <label className="flex cursor-pointer items-center justify-between rounded-lg border border-slate-800 bg-slate-950/40 px-3 py-2.5 text-sm text-slate-300">
+          <label className="flex cursor-pointer items-center justify-between rounded-lg border border-stone-800 bg-stone-950/40 px-3 py-2.5 text-sm text-stone-300">
             <span>Prior contact with the state</span>
             <input
               type="checkbox"
               checked={flagForm.has_prior_contact}
               onChange={(e) => setFlagForm((f) => ({ ...f, has_prior_contact: e.target.checked }))}
-              className="h-4 w-4 rounded border-slate-600 bg-slate-800 accent-violet-600"
+              className="h-4 w-4 rounded border-stone-600 bg-stone-800 accent-blue-600"
             />
           </label>
           <div>
-            <label className="mb-1 block text-xs font-medium text-slate-400">Notes</label>
+            <label className="mb-1 block text-xs font-medium text-stone-400">Notes</label>
             <textarea
               value={flagForm.notes}
               onChange={(e) => setFlagForm((f) => ({ ...f, notes: e.target.value }))}
               rows={3}
               placeholder="Audit-risk context…"
-              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white placeholder:text-slate-500 focus:border-violet-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-2 text-sm text-white placeholder:text-stone-500 focus:border-blue-500 focus:outline-none"
             />
           </div>
         </div>

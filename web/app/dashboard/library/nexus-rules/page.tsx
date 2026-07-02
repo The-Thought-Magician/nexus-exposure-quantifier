@@ -148,8 +148,8 @@ export default function NexusRulesLibraryPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold text-slate-100">State nexus rules</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <h1 className="text-2xl font-semibold text-stone-100">State nexus rules</h1>
+          <p className="mt-1 text-sm text-stone-500">
             Economic-nexus thresholds by state: sales and transaction triggers, measurement windows, marketplace and
             exempt-sales treatment. Sourced from the reference library used across all engagements.
           </p>
@@ -181,20 +181,20 @@ export default function NexusRulesLibraryPage() {
 
           <Card>
             <CardHeader>
-              <h2 className="text-sm font-semibold text-slate-200">Sales-threshold distribution</h2>
+              <h2 className="text-sm font-semibold text-stone-200">Sales-threshold distribution</h2>
             </CardHeader>
             <CardBody>
               <div className="space-y-3">
                 {buckets.rows.map((b) => (
                   <div key={b.label} className="flex items-center gap-3">
-                    <div className="w-28 shrink-0 text-xs text-slate-400">{b.label}</div>
-                    <div className="h-5 flex-1 overflow-hidden rounded bg-slate-800">
+                    <div className="w-28 shrink-0 text-xs text-stone-400">{b.label}</div>
+                    <div className="h-5 flex-1 overflow-hidden rounded bg-stone-800">
                       <div
-                        className="h-full rounded bg-gradient-to-r from-violet-600 to-violet-400"
+                        className="h-full rounded bg-gradient-to-r from-blue-600 to-blue-400"
                         style={{ width: `${(b.n / buckets.max) * 100}%` }}
                       />
                     </div>
-                    <div className="w-8 shrink-0 text-right text-xs tabular-nums text-slate-300">{b.n}</div>
+                    <div className="w-8 shrink-0 text-right text-xs tabular-nums text-stone-300">{b.n}</div>
                   </div>
                 ))}
               </div>
@@ -207,12 +207,12 @@ export default function NexusRulesLibraryPage() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search state, citation, notes…"
-                className="min-w-[12rem] flex-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-violet-500 focus:outline-none"
+                className="min-w-[12rem] flex-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-blue-500 focus:outline-none"
               />
               <select
                 value={periodFilter}
                 onChange={(e) => setPeriodFilter(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
               >
                 <option value="all">All measurement periods</option>
                 {periods.map((p) => (
@@ -224,7 +224,7 @@ export default function NexusRulesLibraryPage() {
               <select
                 value={marketplaceFilter}
                 onChange={(e) => setMarketplaceFilter(e.target.value as 'all' | 'yes' | 'no')}
-                className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
               >
                 <option value="all">Marketplace: any</option>
                 <option value="yes">Counts marketplace</option>
@@ -281,15 +281,15 @@ export default function NexusRulesLibraryPage() {
                         <TD>
                           <button
                             onClick={() => openDetail(r.state)}
-                            className="font-semibold text-slate-100 hover:text-violet-300"
+                            className="font-semibold text-stone-100 hover:text-blue-300"
                           >
                             {r.state}
                           </button>
-                          {r.citation ? <div className="mt-0.5 text-xs text-slate-500">{r.citation}</div> : null}
+                          {r.citation ? <div className="mt-0.5 text-xs text-stone-500">{r.citation}</div> : null}
                         </TD>
-                        <TD className="text-right font-medium text-violet-300">{money(r.sales_threshold)}</TD>
-                        <TD className="text-right text-slate-300">{count(r.transaction_threshold)}</TD>
-                        <TD className="text-slate-400">{r.measurement_period || '—'}</TD>
+                        <TD className="text-right font-medium text-blue-300">{money(r.sales_threshold)}</TD>
+                        <TD className="text-right text-stone-300">{count(r.transaction_threshold)}</TD>
+                        <TD className="text-stone-400">{r.measurement_period || '—'}</TD>
                         <TD>
                           <Badge tone={r.counts_marketplace ? 'amber' : 'slate'}>
                             {r.counts_marketplace ? 'Included' : 'Excluded'}
@@ -300,7 +300,7 @@ export default function NexusRulesLibraryPage() {
                             {r.includes_exempt ? 'Included' : 'Excluded'}
                           </Badge>
                         </TD>
-                        <TD className="text-slate-400">{fmtDate(r.effective_date)}</TD>
+                        <TD className="text-stone-400">{fmtDate(r.effective_date)}</TD>
                         <TD>
                           <div className="flex justify-end">
                             <Button variant="ghost" size="sm" onClick={() => openDetail(r.state)}>
@@ -336,20 +336,20 @@ export default function NexusRulesLibraryPage() {
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <div className="text-xs uppercase tracking-wide text-slate-500">Sales threshold</div>
-                <div className="mt-1 text-lg font-semibold text-violet-300">{money(detail.sales_threshold)}</div>
+                <div className="text-xs uppercase tracking-wide text-stone-500">Sales threshold</div>
+                <div className="mt-1 text-lg font-semibold text-blue-300">{money(detail.sales_threshold)}</div>
               </div>
               <div>
-                <div className="text-xs uppercase tracking-wide text-slate-500">Transaction threshold</div>
-                <div className="mt-1 text-lg font-semibold text-slate-100">{count(detail.transaction_threshold)}</div>
+                <div className="text-xs uppercase tracking-wide text-stone-500">Transaction threshold</div>
+                <div className="mt-1 text-lg font-semibold text-stone-100">{count(detail.transaction_threshold)}</div>
               </div>
               <div>
-                <div className="text-xs uppercase tracking-wide text-slate-500">Measurement period</div>
-                <div className="mt-1 text-sm text-slate-200">{detail.measurement_period || '—'}</div>
+                <div className="text-xs uppercase tracking-wide text-stone-500">Measurement period</div>
+                <div className="mt-1 text-sm text-stone-200">{detail.measurement_period || '—'}</div>
               </div>
               <div>
-                <div className="text-xs uppercase tracking-wide text-slate-500">Effective date</div>
-                <div className="mt-1 text-sm text-slate-200">{fmtDate(detail.effective_date)}</div>
+                <div className="text-xs uppercase tracking-wide text-stone-500">Effective date</div>
+                <div className="mt-1 text-sm text-stone-200">{fmtDate(detail.effective_date)}</div>
               </div>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -362,19 +362,19 @@ export default function NexusRulesLibraryPage() {
             </div>
             {detail.citation ? (
               <div>
-                <div className="text-xs uppercase tracking-wide text-slate-500">Citation</div>
-                <div className="mt-1 text-sm text-slate-200">{detail.citation}</div>
+                <div className="text-xs uppercase tracking-wide text-stone-500">Citation</div>
+                <div className="mt-1 text-sm text-stone-200">{detail.citation}</div>
               </div>
             ) : null}
             {detail.notes ? (
               <div>
-                <div className="text-xs uppercase tracking-wide text-slate-500">Notes</div>
-                <p className="mt-1 text-sm text-slate-300">{detail.notes}</p>
+                <div className="text-xs uppercase tracking-wide text-stone-500">Notes</div>
+                <p className="mt-1 text-sm text-stone-300">{detail.notes}</p>
               </div>
             ) : null}
           </div>
         ) : (
-          <p className="text-sm text-slate-500">No rule found for this state.</p>
+          <p className="text-sm text-stone-500">No rule found for this state.</p>
         )}
       </Modal>
     </div>

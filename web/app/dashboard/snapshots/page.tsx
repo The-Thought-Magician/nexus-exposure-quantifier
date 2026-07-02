@@ -198,8 +198,8 @@ export default function SnapshotsPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold text-slate-100">Snapshots</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <h1 className="text-2xl font-semibold text-stone-100">Snapshots</h1>
+          <p className="mt-1 text-sm text-stone-500">
             Locked, point-in-time exposure snapshots you can share with diligence teams and clients via a read-only
             link. Snapshots freeze the numbers even as the engagement keeps changing.
           </p>
@@ -234,12 +234,12 @@ export default function SnapshotsPage() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search by label or engagement…"
-                className="min-w-[12rem] flex-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-violet-500 focus:outline-none"
+                className="min-w-[12rem] flex-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-blue-500 focus:outline-none"
               />
               <select
                 value={engFilter}
                 onChange={(e) => setEngFilter(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+                className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
               >
                 <option value="all">All engagements</option>
                 {engagements.map((e) => (
@@ -301,24 +301,24 @@ export default function SnapshotsPage() {
                       return (
                         <TR key={s.id}>
                           <TD>
-                            <div className="font-medium text-slate-100">{s.label || 'Untitled snapshot'}</div>
+                            <div className="font-medium text-stone-100">{s.label || 'Untitled snapshot'}</div>
                             <div className="mt-0.5 flex items-center gap-2">
                               <Badge tone="slate">🔒 locked</Badge>
-                              <code className="text-[11px] text-slate-500">{s.share_token.slice(0, 10)}…</code>
+                              <code className="text-[11px] text-stone-500">{s.share_token.slice(0, 10)}…</code>
                             </div>
                           </TD>
-                          <TD className="text-slate-400">
+                          <TD className="text-stone-400">
                             <Link
                               href={`/dashboard/engagements/${s.engagement_id}`}
-                              className="hover:text-violet-300"
+                              className="hover:text-blue-300"
                             >
                               {engName.get(s.engagement_id) || 'Unknown engagement'}
                             </Link>
                           </TD>
-                          <TD className="text-right font-medium text-violet-300">
+                          <TD className="text-right font-medium text-blue-300">
                             {exp !== null ? money(exp) : '—'}
                           </TD>
-                          <TD className="text-slate-400">{fmtDateTime(s.created_at)}</TD>
+                          <TD className="text-stone-400">{fmtDateTime(s.created_at)}</TD>
                           <TD>
                             <div className="flex justify-end gap-2">
                               <a href={`/shared/${s.share_token}`} target="_blank" rel="noopener noreferrer">
@@ -369,19 +369,19 @@ export default function SnapshotsPage() {
           {formError ? (
             <div className="rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-300">{formError}</div>
           ) : null}
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-stone-400">
             A snapshot freezes the engagement’s current exposure numbers into a shareable, read-only link. It does not
             change or lock the engagement itself.
           </p>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Engagement</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Engagement</label>
             {engagements.length === 0 ? (
               <p className="text-sm text-amber-300">Create an engagement first.</p>
             ) : (
               <select
                 value={form.engagement_id}
                 onChange={(e) => setForm((f) => ({ ...f, engagement_id: e.target.value }))}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
               >
                 {engagements.map((e) => (
                   <option key={e.id} value={e.id}>
@@ -392,14 +392,14 @@ export default function SnapshotsPage() {
             )}
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
               Label (optional)
             </label>
             <input
               value={form.label}
               onChange={(e) => setForm((f) => ({ ...f, label: e.target.value }))}
               placeholder="e.g. Q2 diligence pack"
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-violet-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-blue-500 focus:outline-none"
             />
           </div>
         </div>

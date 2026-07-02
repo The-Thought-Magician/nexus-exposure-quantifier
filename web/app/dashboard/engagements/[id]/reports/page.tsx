@@ -75,7 +75,7 @@ const SUB_NAV: { label: string; slug: string }[] = [
 
 function SubNav({ id, active }: { id: string; active: string }) {
   return (
-    <div className="mb-6 flex flex-wrap gap-1 rounded-xl border border-slate-800 bg-slate-900/60 p-1">
+    <div className="mb-6 flex flex-wrap gap-1 rounded-xl border border-stone-800 bg-stone-900/60 p-1">
       {SUB_NAV.map((t) => {
         const href = t.slug ? `/dashboard/engagements/${id}/${t.slug}` : `/dashboard/engagements/${id}`
         const isActive = t.slug === active
@@ -84,7 +84,7 @@ function SubNav({ id, active }: { id: string; active: string }) {
             key={t.slug || 'summary'}
             href={href}
             className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
-              isActive ? 'bg-violet-600 text-white' : 'text-slate-400 hover:bg-slate-800 hover:text-slate-100'
+              isActive ? 'bg-blue-600 text-white' : 'text-stone-400 hover:bg-stone-800 hover:text-stone-100'
             }`}
           >
             {t.label}
@@ -248,12 +248,12 @@ export default function ReportsPage() {
         <div>
           <Link
             href={`/dashboard/engagements/${id}`}
-            className="text-xs text-slate-500 transition-colors hover:text-violet-300"
+            className="text-xs text-stone-500 transition-colors hover:text-blue-300"
           >
             ← Engagement
           </Link>
-          <h1 className="mt-1 text-2xl font-bold text-slate-100">Reports &amp; Working Papers</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <h1 className="mt-1 text-2xl font-bold text-stone-100">Reports &amp; Working Papers</h1>
+          <p className="mt-1 text-sm text-stone-500">
             Binder-ready exports: diligence summary, consolidated state schedule, and period-by-period working papers.
           </p>
         </div>
@@ -284,7 +284,7 @@ export default function ReportsPage() {
       ) : (
         <div className="space-y-6">
           {/* Tab strip */}
-          <div className="flex flex-wrap gap-1 rounded-xl border border-slate-800 bg-slate-900/60 p-1">
+          <div className="flex flex-wrap gap-1 rounded-xl border border-stone-800 bg-stone-900/60 p-1">
             {(
               [
                 { k: 'summary', label: 'Binder summary' },
@@ -296,7 +296,7 @@ export default function ReportsPage() {
                 key={t.k}
                 onClick={() => setTab(t.k)}
                 className={`rounded-lg px-4 py-1.5 text-xs font-medium transition-colors ${
-                  tab === t.k ? 'bg-violet-600 text-white' : 'text-slate-400 hover:bg-slate-800 hover:text-slate-100'
+                  tab === t.k ? 'bg-blue-600 text-white' : 'text-stone-400 hover:bg-stone-800 hover:text-stone-100'
                 }`}
               >
                 {t.label}
@@ -317,9 +317,9 @@ export default function ReportsPage() {
               <Card>
                 <CardHeader>
                   <div className="flex items-center justify-between">
-                    <h2 className="text-sm font-semibold text-slate-200">Diligence binder summary</h2>
+                    <h2 className="text-sm font-semibold text-stone-200">Diligence binder summary</h2>
                     {summary?.generated_at && (
-                      <span className="text-xs text-slate-500">
+                      <span className="text-xs text-stone-500">
                         Generated {new Date(summary.generated_at).toLocaleString('en-US')}
                       </span>
                     )}
@@ -328,17 +328,17 @@ export default function ReportsPage() {
                 <CardBody className="space-y-4">
                   <dl className="grid gap-4 sm:grid-cols-2">
                     <div>
-                      <dt className="text-xs uppercase tracking-wide text-slate-500">Engagement</dt>
-                      <dd className="mt-1 text-sm text-slate-200">{eng?.name || '—'}</dd>
+                      <dt className="text-xs uppercase tracking-wide text-stone-500">Engagement</dt>
+                      <dd className="mt-1 text-sm text-stone-200">{eng?.name || '—'}</dd>
                     </div>
                     <div>
-                      <dt className="text-xs uppercase tracking-wide text-slate-500">As-of date</dt>
-                      <dd className="mt-1 text-sm text-slate-200">
+                      <dt className="text-xs uppercase tracking-wide text-stone-500">As-of date</dt>
+                      <dd className="mt-1 text-sm text-stone-200">
                         {eng?.as_of_date ? new Date(eng.as_of_date).toLocaleDateString('en-US') : '—'}
                       </dd>
                     </div>
                     <div>
-                      <dt className="text-xs uppercase tracking-wide text-slate-500">Status</dt>
+                      <dt className="text-xs uppercase tracking-wide text-stone-500">Status</dt>
                       <dd className="mt-1">
                         <Badge tone={eng?.status === 'final' || eng?.status === 'locked' ? 'green' : 'slate'}>
                           {eng?.status || 'draft'}
@@ -346,11 +346,11 @@ export default function ReportsPage() {
                       </dd>
                     </div>
                     <div>
-                      <dt className="text-xs uppercase tracking-wide text-slate-500">States with exposure</dt>
-                      <dd className="mt-1 text-sm text-slate-200">
+                      <dt className="text-xs uppercase tracking-wide text-stone-500">States with exposure</dt>
+                      <dd className="mt-1 text-sm text-stone-200">
                         {summary?.state_count ?? schedule.length}
                         {summary?.crossed_states != null && (
-                          <span className="text-slate-500"> ({summary.crossed_states} crossed nexus)</span>
+                          <span className="text-stone-500"> ({summary.crossed_states} crossed nexus)</span>
                         )}
                       </dd>
                     </div>
@@ -361,23 +361,23 @@ export default function ReportsPage() {
                       <div className="text-xs font-semibold uppercase tracking-wide text-emerald-300">
                         Recommendation
                       </div>
-                      <p className="mt-1 text-sm text-slate-200">{summary.recommendation}</p>
+                      <p className="mt-1 text-sm text-stone-200">{summary.recommendation}</p>
                     </div>
                   )}
 
                   {summary?.assumptions && Object.keys(summary.assumptions).length > 0 && (
                     <div>
-                      <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                      <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-stone-500">
                         Key assumptions
                       </div>
                       <div className="grid gap-2 sm:grid-cols-2">
                         {Object.entries(summary.assumptions).map(([k, v]) => (
                           <div
                             key={k}
-                            className="flex items-center justify-between rounded-lg border border-slate-800 bg-slate-950/40 px-3 py-2 text-sm"
+                            className="flex items-center justify-between rounded-lg border border-stone-800 bg-stone-950/40 px-3 py-2 text-sm"
                           >
-                            <span className="text-slate-400">{k.replace(/_/g, ' ')}</span>
-                            <span className="font-medium text-slate-200">{String(v)}</span>
+                            <span className="text-stone-400">{k.replace(/_/g, ' ')}</span>
+                            <span className="font-medium text-stone-200">{String(v)}</span>
                           </div>
                         ))}
                       </div>
@@ -387,19 +387,19 @@ export default function ReportsPage() {
                   {/* Top-state mini distribution */}
                   {schedule.length > 0 && (
                     <div>
-                      <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                      <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-stone-500">
                         Exposure by state
                       </div>
                       <div className="space-y-2">
                         {orderedSchedule.slice(0, 8).map((r) => (
                           <div key={r.state}>
                             <div className="mb-1 flex items-center justify-between text-xs">
-                              <span className="font-medium text-slate-300">{r.state}</span>
-                              <span className="tabular-nums text-slate-400">{money(r.total)}</span>
+                              <span className="font-medium text-stone-300">{r.state}</span>
+                              <span className="tabular-nums text-stone-400">{money(r.total)}</span>
                             </div>
-                            <div className="h-2 w-full overflow-hidden rounded-full bg-slate-800">
+                            <div className="h-2 w-full overflow-hidden rounded-full bg-stone-800">
                               <div
-                                className="h-full rounded-full bg-violet-500"
+                                className="h-full rounded-full bg-blue-500"
                                 style={{ width: `${Math.max(2, (num(r.total) / maxStateTotal) * 100)}%` }}
                               />
                             </div>
@@ -418,7 +418,7 @@ export default function ReportsPage() {
             <Card>
               <CardHeader>
                 <div className="flex items-center justify-between">
-                  <h2 className="text-sm font-semibold text-slate-200">Consolidated per-state schedule</h2>
+                  <h2 className="text-sm font-semibold text-stone-200">Consolidated per-state schedule</h2>
                   <Button variant="secondary" size="sm" onClick={exportSchedule} disabled={schedule.length === 0}>
                     Export CSV
                   </Button>
@@ -426,7 +426,7 @@ export default function ReportsPage() {
               </CardHeader>
               {schedule.length === 0 ? (
                 <CardBody>
-                  <p className="py-6 text-center text-sm text-slate-500">
+                  <p className="py-6 text-center text-sm text-stone-500">
                     No schedule rows. Run the exposure computation to populate this schedule.
                   </p>
                 </CardBody>
@@ -447,30 +447,30 @@ export default function ReportsPage() {
                   <TBody>
                     {orderedSchedule.map((r, i) => (
                       <TR key={r.state ?? i}>
-                        <TD className="font-semibold text-slate-100">{r.state}</TD>
+                        <TD className="font-semibold text-stone-100">{r.state}</TD>
                         <TD className="text-right tabular-nums">{money(r.tax)}</TD>
                         <TD className="text-right tabular-nums">{money(r.penalty)}</TD>
                         <TD className="text-right tabular-nums">{money(r.interest)}</TD>
-                        <TD className="text-right font-semibold tabular-nums text-slate-100">{money(r.total)}</TD>
-                        <TD className="text-right tabular-nums text-slate-400">{money(r.vda_total)}</TD>
+                        <TD className="text-right font-semibold tabular-nums text-stone-100">{money(r.total)}</TD>
+                        <TD className="text-right tabular-nums text-stone-400">{money(r.vda_total)}</TD>
                         <TD className="text-right tabular-nums text-emerald-300">{money(r.vda_savings)}</TD>
                         <TD>
                           {r.materiality_band ? (
                             <Badge tone={bandTone(r.materiality_band)}>{r.materiality_band}</Badge>
                           ) : (
-                            <span className="text-xs text-slate-600">—</span>
+                            <span className="text-xs text-stone-600">—</span>
                           )}
                         </TD>
                       </TR>
                     ))}
                   </TBody>
-                  <tfoot className="border-t-2 border-slate-700 bg-slate-900/80">
+                  <tfoot className="border-t-2 border-stone-700 bg-stone-900/80">
                     <tr>
-                      <td className="px-4 py-3 text-sm font-semibold text-slate-200">Total ({schedule.length} states)</td>
-                      <td className="px-4 py-3 text-right text-sm font-semibold tabular-nums text-slate-200">{money(scheduleTotals.tax)}</td>
-                      <td className="px-4 py-3 text-right text-sm font-semibold tabular-nums text-slate-200">{money(scheduleTotals.penalty)}</td>
-                      <td className="px-4 py-3 text-right text-sm font-semibold tabular-nums text-slate-200">{money(scheduleTotals.interest)}</td>
-                      <td className="px-4 py-3 text-right text-sm font-semibold tabular-nums text-slate-100">{money(scheduleTotals.total)}</td>
+                      <td className="px-4 py-3 text-sm font-semibold text-stone-200">Total ({schedule.length} states)</td>
+                      <td className="px-4 py-3 text-right text-sm font-semibold tabular-nums text-stone-200">{money(scheduleTotals.tax)}</td>
+                      <td className="px-4 py-3 text-right text-sm font-semibold tabular-nums text-stone-200">{money(scheduleTotals.penalty)}</td>
+                      <td className="px-4 py-3 text-right text-sm font-semibold tabular-nums text-stone-200">{money(scheduleTotals.interest)}</td>
+                      <td className="px-4 py-3 text-right text-sm font-semibold tabular-nums text-stone-100">{money(scheduleTotals.total)}</td>
                       <td className="px-4 py-3" />
                       <td className="px-4 py-3 text-right text-sm font-semibold tabular-nums text-emerald-300">{money(scheduleTotals.vdaSavings)}</td>
                       <td className="px-4 py-3" />
@@ -487,8 +487,8 @@ export default function ReportsPage() {
               <CardHeader>
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                   <div>
-                    <h2 className="text-sm font-semibold text-slate-200">Working papers</h2>
-                    <p className="mt-0.5 text-xs text-slate-500">
+                    <h2 className="text-sm font-semibold text-stone-200">Working papers</h2>
+                    <p className="mt-0.5 text-xs text-stone-500">
                       Period-by-period taxable sales, applied rates, and computed tax / penalty / interest.
                     </p>
                   </div>
@@ -497,7 +497,7 @@ export default function ReportsPage() {
                       value={search}
                       onChange={(e) => setSearch(e.target.value)}
                       placeholder="Filter state / period…"
-                      className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-1.5 text-sm text-white placeholder:text-slate-500 focus:border-violet-500 focus:outline-none sm:w-56"
+                      className="w-full rounded-lg border border-stone-700 bg-stone-800 px-3 py-1.5 text-sm text-white placeholder:text-stone-500 focus:border-blue-500 focus:outline-none sm:w-56"
                     />
                     <Button
                       variant="secondary"
@@ -512,13 +512,13 @@ export default function ReportsPage() {
               </CardHeader>
               {workingPapers.length === 0 ? (
                 <CardBody>
-                  <p className="py-6 text-center text-sm text-slate-500">
+                  <p className="py-6 text-center text-sm text-stone-500">
                     No working-paper rows. Run the exposure computation to generate period detail.
                   </p>
                 </CardBody>
               ) : filteredWp.length === 0 ? (
                 <CardBody>
-                  <p className="py-6 text-center text-sm text-slate-500">No rows match “{search}”.</p>
+                  <p className="py-6 text-center text-sm text-stone-500">No rows match “{search}”.</p>
                 </CardBody>
               ) : (
                 <Table>
@@ -536,10 +536,10 @@ export default function ReportsPage() {
                   <TBody>
                     {filteredWp.map((r, i) => (
                       <TR key={i}>
-                        <TD className="font-medium text-slate-100">{r.state || '—'}</TD>
-                        <TD className="text-slate-300">{r.period || '—'}</TD>
+                        <TD className="font-medium text-stone-100">{r.state || '—'}</TD>
+                        <TD className="text-stone-300">{r.period || '—'}</TD>
                         <TD className="text-right tabular-nums">{money(r.taxable_sales)}</TD>
-                        <TD className="text-right tabular-nums text-slate-400">{pct(r.rate_applied)}</TD>
+                        <TD className="text-right tabular-nums text-stone-400">{pct(r.rate_applied)}</TD>
                         <TD className="text-right tabular-nums">{money(r.tax)}</TD>
                         <TD className="text-right tabular-nums">{money(r.penalty)}</TD>
                         <TD className="text-right tabular-nums">{money(r.interest)}</TD>
@@ -549,7 +549,7 @@ export default function ReportsPage() {
                 </Table>
               )}
               {filteredWp.length > 0 && (
-                <CardBody className="border-t border-slate-800 text-xs text-slate-500">
+                <CardBody className="border-t border-stone-800 text-xs text-stone-500">
                   {filteredWp.length} row{filteredWp.length === 1 ? '' : 's'}
                   {search ? ` matching “${search}”` : ''} of {workingPapers.length} total
                 </CardBody>

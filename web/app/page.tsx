@@ -2,63 +2,63 @@ import Link from 'next/link'
 
 const features = [
   {
-    title: 'Retroactive crossing-date detector',
-    body: 'Walks your historical sales chronologically per state and pinpoints the exact month each economic-nexus threshold was first crossed, honoring rolling-12-month vs calendar-year windows and dual sales/transaction tests.',
+    title: 'Retroactive crossing-date determination',
+    body: 'The engine reviews historical sales chronologically, by state, and establishes the precise month each economic-nexus threshold was first triggered, applying rolling-12-month or calendar-year windows and dual sales/transaction tests as governed by each jurisdiction’s rule.',
   },
   {
-    title: 'Per-state uncollected-tax estimator',
-    body: 'From each crossing date forward to your as-of date, applies the state effective rate to taxable sales, period by period, matching the state filing frequency, for a defensible base-tax subtotal.',
+    title: 'Per-state uncollected-tax computation',
+    body: 'From the determined crossing date forward to the stated as-of date, the applicable state effective rate is applied to taxable sales, period by period, aligned to the jurisdiction’s filing frequency, yielding a documented base-tax subtotal.',
   },
   {
     title: 'Penalty and interest accrual',
-    body: 'Encodes each state failure-to-file / failure-to-pay penalty schedule, caps and minimums, plus statutory interest by year and compounding convention, accrued to today.',
+    body: 'Each jurisdiction’s failure-to-file and failure-to-pay penalty schedule, applicable caps and minimums, and statutory interest convention are applied and accrued through the current date.',
   },
   {
-    title: 'VDA lookback modeler',
-    body: 'Re-runs the full exposure under a Voluntary Disclosure Agreement, capping the lookback window and waiving penalties, then quantifies the savings versus doing nothing.',
+    title: 'Voluntary Disclosure Agreement modeling',
+    body: 'Recomputes total exposure under a Voluntary Disclosure Agreement, applying the capped lookback window and penalty abatement, and quantifies the resulting reduction in liability relative to no remediation.',
   },
   {
-    title: 'Register vs VDA vs wait',
-    body: 'Compares the three remediation paths on one screen, each with a total dollar figure and per-state breakdown, and recommends a path based on materiality and savings.',
+    title: 'Register, disclose, or defer: comparative analysis',
+    body: 'Presents the three remediation paths side by side, each with a total liability figure and per-state detail, to support a documented, materiality-based remediation decision.',
   },
   {
-    title: 'Board-ready exposure memos',
-    body: 'Generates auditor-ready per-state and consolidated memos with methodology, assumptions, citations, and an as-of-date stamp, exportable for the data room.',
+    title: 'Exposure memoranda for the record',
+    body: 'Produces per-state and consolidated memoranda documenting methodology, assumptions, and citations, each stamped with the as-of date, suitable for inclusion in a diligence data room.',
   },
   {
     title: 'Materiality ranking',
-    body: 'Ranks states by exposure with configurable high/medium/low banding so you know which states drive most of the liability.',
+    body: 'Ranks jurisdictions by exposure using configurable high, medium, and low thresholds to identify which states account for the majority of the liability under review.',
   },
   {
-    title: 'Wait-cost timeline',
-    body: 'Projects how exposure grows each month you wait and the date a VDA stops being worthwhile, with a recommended decision deadline.',
+    title: 'Cost-of-delay projection',
+    body: 'Projects the monthly growth of unremediated exposure and identifies the date beyond which a Voluntary Disclosure Agreement ceases to be advantageous, with a recommended decision deadline.',
   },
   {
-    title: 'One-click sample data',
-    body: 'A built-in seeder synthesizes realistic multi-state sales history so you can see a fully populated exposure analysis within seconds of signing in.',
+    title: 'Sample data for evaluation',
+    body: 'A built-in data seeder generates representative multi-state sales history so a fully populated exposure analysis can be reviewed immediately after sign-in.',
   },
 ]
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-100">
-      <nav className="flex items-center justify-between border-b border-slate-800 px-6 py-4">
+    <main className="min-h-screen bg-stone-950 text-stone-100">
+      <nav className="flex items-center justify-between border-b border-stone-800 px-6 py-4">
         <span className="flex items-center gap-2">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-violet-600 text-sm font-black text-white">
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-sm font-black text-white">
             N
           </span>
           <span className="text-base font-semibold tracking-tight">NexusExposureQuantifier</span>
         </span>
         <div className="flex items-center gap-4 text-sm">
-          <Link href="/pricing" className="text-slate-300 hover:text-white">
+          <Link href="/pricing" className="text-stone-300 hover:text-white">
             Pricing
           </Link>
-          <Link href="/auth/sign-in" className="text-slate-300 hover:text-white">
+          <Link href="/auth/sign-in" className="text-stone-300 hover:text-white">
             Sign In
           </Link>
           <Link
             href="/auth/sign-up"
-            className="rounded-lg bg-violet-600 px-4 py-2 font-medium text-white hover:bg-violet-500"
+            className="rounded-lg bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-500"
           >
             Get Started
           </Link>
@@ -67,27 +67,28 @@ export default function Home() {
 
       {/* Hero */}
       <section className="mx-auto max-w-5xl px-6 py-24 text-center">
-        <span className="inline-flex items-center rounded-full border border-violet-500/30 bg-violet-500/10 px-3 py-1 text-xs font-medium text-violet-300">
-          Backward-looking sales-tax exposure engine
+        <span className="inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-300">
+          Backward-looking sales-tax exposure quantification
         </span>
         <h1 className="mx-auto mt-6 max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl">
-          Turn "we probably owe sales tax somewhere" into a dated, defensible number.
+          A documented, dated determination of unremediated sales-tax exposure, by state.
         </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
-          NexusExposureQuantifier computes back-tax, late-registration penalties, and statutory interest per state,
-          accrued from the exact month you crossed each nexus threshold, then models register-now vs VDA vs wait so
-          your CFO gets one citable figure for the diligence binder.
+        <p className="mx-auto mt-6 max-w-2xl text-lg text-stone-400">
+          NexusExposureQuantifier computes back-tax, late-registration penalties, and statutory interest for each
+          jurisdiction, accrued from the month economic nexus was first established, and models the register,
+          disclose, or defer remediation paths so the finding can be presented to counsel, the board, or a
+          counterparty's diligence team with a single citable figure.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Link
             href="/auth/sign-up"
-            className="rounded-lg bg-violet-600 px-6 py-3 font-semibold text-white hover:bg-violet-500"
+            className="rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-500"
           >
-            Quantify my exposure
+            Quantify exposure
           </Link>
           <Link
             href="/auth/sign-in"
-            className="rounded-lg border border-slate-700 px-6 py-3 font-semibold text-slate-200 hover:bg-slate-800"
+            className="rounded-lg border border-stone-700 px-6 py-3 font-semibold text-stone-200 hover:bg-stone-800"
           >
             Sign in
           </Link>
@@ -95,34 +96,36 @@ export default function Home() {
       </section>
 
       {/* Problem */}
-      <section className="border-y border-slate-800 bg-slate-900/40">
+      <section className="border-y border-stone-800 bg-stone-900/40">
         <div className="mx-auto max-w-5xl px-6 py-16">
-          <h2 className="text-2xl font-bold">Unremediated exposure is a top diligence finding</h2>
-          <p className="mt-4 max-w-3xl text-slate-400">
-            Since <em>South Dakota v. Wayfair</em>, every state with a sales tax has an economic-nexus threshold.
-            Software and e-commerce companies blow past them in a dozen states without registering. It surfaces at the
-            worst time.
+          <h2 className="text-2xl font-bold">Unremediated nexus exposure is a recurring diligence finding</h2>
+          <p className="mt-4 max-w-3xl text-stone-400">
+            Following <em>South Dakota v. Wayfair</em>, every state levying a sales tax now applies an economic-nexus
+            threshold. Multi-state sellers routinely exceed these thresholds in numerous jurisdictions without
+            registering. Absent a documented determination, the resulting liability is discovered, not managed, and
+            typically at the least favorable moment.
           </p>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
-            <div className="rounded-xl border border-slate-800 bg-slate-900 p-5">
-              <h3 className="font-semibold text-slate-100">Deal risk</h3>
-              <p className="mt-2 text-sm text-slate-400">
-                An un-sized liability kills deals, forces escrow holdbacks, or carves a dollar-for-dollar cut from the
-                purchase price.
+            <div className="rounded-xl border border-stone-800 bg-stone-900 p-5">
+              <h3 className="font-semibold text-stone-100">Transaction risk</h3>
+              <p className="mt-2 text-sm text-stone-400">
+                An unquantified liability introduces uncertainty into a transaction, prompting escrow holdbacks,
+                indemnification demands, or a direct reduction in purchase price.
               </p>
             </div>
-            <div className="rounded-xl border border-slate-800 bg-slate-900 p-5">
-              <h3 className="font-semibold text-slate-100">Time pressure</h3>
-              <p className="mt-2 text-sm text-slate-400">
-                Exposure grows every month, and a VDA is foreclosed the moment a state opens an audit. The clock is not
-                yours to control.
+            <div className="rounded-xl border border-stone-800 bg-stone-900 p-5">
+              <h3 className="font-semibold text-stone-100">Time-sensitivity of remediation</h3>
+              <p className="mt-2 text-sm text-stone-400">
+                Exposure accrues monthly, and the Voluntary Disclosure Agreement remedy is foreclosed once a
+                jurisdiction initiates an audit. The remediation window is not within the taxpayer's control to
+                extend.
               </p>
             </div>
-            <div className="rounded-xl border border-slate-800 bg-slate-900 p-5">
-              <h3 className="font-semibold text-slate-100">Cost and opacity</h3>
-              <p className="mt-2 text-sm text-slate-400">
-                Consultants charge four to five figures for an opaque spreadsheet the CFO cannot independently re-run
-                when assumptions change.
+            <div className="rounded-xl border border-stone-800 bg-stone-900 p-5">
+              <h3 className="font-semibold text-stone-100">Cost and reproducibility</h3>
+              <p className="mt-2 text-sm text-stone-400">
+                Engagement of outside consultants is costly and frequently yields a static, non-reproducible
+                spreadsheet that cannot be independently re-run when underlying assumptions change.
               </p>
             </div>
           </div>
@@ -131,39 +134,39 @@ export default function Home() {
 
       {/* Feature grid */}
       <section className="mx-auto max-w-6xl px-6 py-20">
-        <h2 className="text-center text-2xl font-bold">A deterministic engine, not a spreadsheet</h2>
-        <p className="mx-auto mt-3 max-w-2xl text-center text-slate-400">
-          Every number is reproducible, cited to the rule and rate used, and re-runnable the instant an assumption
-          changes.
+        <h2 className="text-center text-2xl font-bold">A deterministic quantification engine</h2>
+        <p className="mx-auto mt-3 max-w-2xl text-center text-stone-400">
+          Every figure produced is reproducible, cited to the rule and rate applied, and subject to immediate
+          recomputation upon a change in assumptions.
         </p>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((f) => (
-            <div key={f.title} className="rounded-xl border border-slate-800 bg-slate-900 p-6">
-              <h3 className="font-semibold text-violet-300">{f.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-400">{f.body}</p>
+            <div key={f.title} className="rounded-xl border border-stone-800 bg-stone-900 p-6">
+              <h3 className="font-semibold text-blue-300">{f.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-stone-400">{f.body}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="border-t border-slate-800 bg-slate-900/40">
+      <section className="border-t border-stone-800 bg-stone-900/40">
         <div className="mx-auto max-w-4xl px-6 py-20 text-center">
-          <h2 className="text-3xl font-bold">Size it before the buyer's accountants do.</h2>
-          <p className="mx-auto mt-4 max-w-xl text-slate-400">
-            Sign in, seed sample multi-state sales, and see a fully populated exposure analysis in seconds. All
-            features free.
+          <h2 className="text-3xl font-bold">Establish the figure before it is established for you.</h2>
+          <p className="mx-auto mt-4 max-w-xl text-stone-400">
+            Sign in, load representative multi-state sales data, and review a fully populated exposure analysis
+            within seconds. All capabilities are available at no charge.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/auth/sign-up"
-              className="rounded-lg bg-violet-600 px-6 py-3 font-semibold text-white hover:bg-violet-500"
+              className="rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-500"
             >
               Get started free
             </Link>
             <Link
               href="/pricing"
-              className="rounded-lg border border-slate-700 px-6 py-3 font-semibold text-slate-200 hover:bg-slate-800"
+              className="rounded-lg border border-stone-700 px-6 py-3 font-semibold text-stone-200 hover:bg-stone-800"
             >
               See pricing
             </Link>
@@ -171,7 +174,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="border-t border-slate-800 py-8 text-center text-sm text-slate-600">
+      <footer className="border-t border-stone-800 py-8 text-center text-sm text-stone-600">
         <p>NexusExposureQuantifier — deterministic backward-looking sales-tax exposure analysis.</p>
         <p className="mt-1">Not a tax-filing service. Not a forward-looking nexus monitor.</p>
       </footer>

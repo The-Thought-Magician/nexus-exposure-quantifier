@@ -111,8 +111,8 @@ export default function DashboardPage() {
     <div className="space-y-8">
       <header className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100">Dashboard</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <h1 className="text-2xl font-bold text-stone-100">Dashboard</h1>
+          <p className="mt-1 text-sm text-stone-500">
             Aggregate sales-tax nexus exposure across all your engagements.
           </p>
         </div>
@@ -151,18 +151,18 @@ export default function DashboardPage() {
       {/* Recent engagements */}
       <Card>
         <CardHeader className="flex flex-wrap items-center justify-between gap-3">
-          <h2 className="text-base font-semibold text-slate-100">Recent engagements</h2>
+          <h2 className="text-base font-semibold text-stone-100">Recent engagements</h2>
           <div className="flex flex-wrap items-center gap-2">
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search engagements..."
-              className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-1.5 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+              className="rounded-lg border border-stone-700 bg-stone-800 px-3 py-1.5 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
             />
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-1.5 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+              className="rounded-lg border border-stone-700 bg-stone-800 px-3 py-1.5 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
             >
               <option value="all">All statuses</option>
               {statuses.map((s) => (
@@ -209,9 +209,9 @@ export default function DashboardPage() {
                   <TR key={e.id} className="cursor-pointer">
                     <TD>
                       <Link href={`/dashboard/engagements/${e.id}`} className="block">
-                        <span className="font-medium text-slate-100 hover:text-violet-300">{e.name}</span>
+                        <span className="font-medium text-stone-100 hover:text-blue-300">{e.name}</span>
                         {e.description ? (
-                          <span className="mt-0.5 block max-w-md truncate text-xs text-slate-500">
+                          <span className="mt-0.5 block max-w-md truncate text-xs text-stone-500">
                             {e.description}
                           </span>
                         ) : null}
@@ -223,13 +223,13 @@ export default function DashboardPage() {
                         {e.is_locked ? <Badge tone="amber">Locked</Badge> : null}
                       </div>
                     </TD>
-                    <TD className="text-slate-400">
+                    <TD className="text-stone-400">
                       {e.as_of_date ? new Date(e.as_of_date).toLocaleDateString() : '—'}
                     </TD>
-                    <TD className="text-right font-semibold text-violet-300">{currency(e.total_exposure)}</TD>
+                    <TD className="text-right font-semibold text-blue-300">{currency(e.total_exposure)}</TD>
                     <TD className="text-right">{currency(e.total_tax)}</TD>
                     <TD className="text-right text-emerald-300">{currency(e.total_vda_savings)}</TD>
-                    <TD className="text-slate-500">
+                    <TD className="text-stone-500">
                       {e.updated_at ? new Date(e.updated_at).toLocaleDateString() : '—'}
                     </TD>
                   </TR>

@@ -171,8 +171,8 @@ export default function AssumptionsPage({ params }: { params: Promise<{ id: stri
     <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-xl font-semibold text-slate-100">Assumptions Register</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <h1 className="text-xl font-semibold text-stone-100">Assumptions Register</h1>
+          <p className="mt-1 text-sm text-stone-500">
             Modeling assumptions that drive crossing detection, rate application, and interest accrual. Every change is
             logged for the diligence trail.
           </p>
@@ -199,9 +199,9 @@ export default function AssumptionsPage({ params }: { params: Promise<{ id: stri
         <div className="grid gap-6 lg:grid-cols-3">
           <Card className="lg:col-span-2">
             <CardHeader className="flex items-center justify-between">
-              <h2 className="text-sm font-semibold text-slate-200">Register</h2>
+              <h2 className="text-sm font-semibold text-stone-200">Register</h2>
               {current?.updated_at ? (
-                <span className="text-xs text-slate-500">Updated {fmtDate(current.updated_at)}</span>
+                <span className="text-xs text-stone-500">Updated {fmtDate(current.updated_at)}</span>
               ) : null}
             </CardHeader>
             <CardBody className="space-y-5">
@@ -218,13 +218,13 @@ export default function AssumptionsPage({ params }: { params: Promise<{ id: stri
 
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
-                  <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+                  <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                     Effective rate basis
                   </label>
                   <select
                     value={form.effective_rate_basis}
                     onChange={(e) => setForm((f) => ({ ...f, effective_rate_basis: e.target.value }))}
-                    className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+                    className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
                   >
                     {RATE_BASIS.map((o) => (
                       <option key={o.value} value={o.value}>
@@ -235,13 +235,13 @@ export default function AssumptionsPage({ params }: { params: Promise<{ id: stri
                 </div>
 
                 <div>
-                  <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+                  <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                     Interest compounding
                   </label>
                   <select
                     value={form.compounding}
                     onChange={(e) => setForm((f) => ({ ...f, compounding: e.target.value }))}
-                    className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+                    className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
                   >
                     {COMPOUNDING.map((o) => (
                       <option key={o.value} value={o.value}>
@@ -252,13 +252,13 @@ export default function AssumptionsPage({ params }: { params: Promise<{ id: stri
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+                  <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                     SaaS taxability stance
                   </label>
                   <select
                     value={form.saas_taxable_stance}
                     onChange={(e) => setForm((f) => ({ ...f, saas_taxable_stance: e.target.value }))}
-                    className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-violet-500 focus:outline-none"
+                    className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-blue-500 focus:outline-none"
                   >
                     {SAAS_STANCE.map((o) => (
                       <option key={o.value} value={o.value}>
@@ -268,31 +268,31 @@ export default function AssumptionsPage({ params }: { params: Promise<{ id: stri
                   </select>
                 </div>
 
-                <label className="flex items-start gap-3 rounded-lg border border-slate-800 bg-slate-950/50 px-3 py-3 text-sm text-slate-300">
+                <label className="flex items-start gap-3 rounded-lg border border-stone-800 bg-stone-950/50 px-3 py-3 text-sm text-stone-300">
                   <input
                     type="checkbox"
                     checked={!!form.include_marketplace_sales}
                     onChange={(e) => setForm((f) => ({ ...f, include_marketplace_sales: e.target.checked }))}
-                    className="mt-0.5 h-4 w-4 rounded border-slate-600 bg-slate-950 text-violet-600 focus:ring-violet-500"
+                    className="mt-0.5 h-4 w-4 rounded border-stone-600 bg-stone-950 text-blue-600 focus:ring-blue-500"
                   />
                   <span>
                     Include marketplace sales
-                    <span className="mt-0.5 block text-xs text-slate-500">
+                    <span className="mt-0.5 block text-xs text-stone-500">
                       Count marketplace-facilitated sales toward the economic-nexus measure.
                     </span>
                   </span>
                 </label>
 
-                <label className="flex items-start gap-3 rounded-lg border border-slate-800 bg-slate-950/50 px-3 py-3 text-sm text-slate-300">
+                <label className="flex items-start gap-3 rounded-lg border border-stone-800 bg-stone-950/50 px-3 py-3 text-sm text-stone-300">
                   <input
                     type="checkbox"
                     checked={!!form.include_exempt_in_measure}
                     onChange={(e) => setForm((f) => ({ ...f, include_exempt_in_measure: e.target.checked }))}
-                    className="mt-0.5 h-4 w-4 rounded border-slate-600 bg-slate-950 text-violet-600 focus:ring-violet-500"
+                    className="mt-0.5 h-4 w-4 rounded border-stone-600 bg-stone-950 text-blue-600 focus:ring-blue-500"
                   />
                   <span>
                     Include exempt sales in measure
-                    <span className="mt-0.5 block text-xs text-slate-500">
+                    <span className="mt-0.5 block text-xs text-stone-500">
                       Include exempt / non-taxable sales when testing the threshold.
                     </span>
                   </span>
@@ -300,13 +300,13 @@ export default function AssumptionsPage({ params }: { params: Promise<{ id: stri
               </div>
 
               <div>
-                <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Notes</label>
+                <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Notes</label>
                 <textarea
                   value={form.notes ?? ''}
                   onChange={(e) => setForm((f) => ({ ...f, notes: e.target.value }))}
                   rows={3}
                   placeholder="Rationale, client-specific caveats, source docs…"
-                  className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-violet-500 focus:outline-none"
+                  className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-blue-500 focus:outline-none"
                 />
               </div>
 
@@ -324,7 +324,7 @@ export default function AssumptionsPage({ params }: { params: Promise<{ id: stri
 
           <Card>
             <CardHeader className="flex items-center justify-between">
-              <h2 className="text-sm font-semibold text-slate-200">Change log</h2>
+              <h2 className="text-sm font-semibold text-stone-200">Change log</h2>
               <Badge tone="slate">{sortedLog.length}</Badge>
             </CardHeader>
             <CardBody>
@@ -334,29 +334,29 @@ export default function AssumptionsPage({ params }: { params: Promise<{ id: stri
                   description="Edits to the register above will appear here with a timestamped audit entry."
                 />
               ) : (
-                <ol className="relative space-y-4 border-l border-slate-800 pl-4">
+                <ol className="relative space-y-4 border-l border-stone-800 pl-4">
                   {sortedLog.map((entry, i) => (
                     <li key={i} className="relative">
-                      <span className="absolute -left-[21px] top-1 h-2.5 w-2.5 rounded-full border border-violet-400 bg-violet-500" />
-                      <div className="text-xs text-slate-500">{fmtDate(entry.at ?? entry.timestamp)}</div>
+                      <span className="absolute -left-[21px] top-1 h-2.5 w-2.5 rounded-full border border-blue-400 bg-blue-500" />
+                      <div className="text-xs text-stone-500">{fmtDate(entry.at ?? entry.timestamp)}</div>
                       {entry.field ? (
-                        <div className="mt-0.5 text-sm text-slate-200">
+                        <div className="mt-0.5 text-sm text-stone-200">
                           <span className="font-medium">{FIELD_LABELS[entry.field] ?? entry.field}</span>{' '}
-                          <span className="text-slate-500">changed</span>
+                          <span className="text-stone-500">changed</span>
                           <div className="mt-1 flex flex-wrap items-center gap-1 text-xs">
-                            <span className="rounded bg-slate-800 px-1.5 py-0.5 text-slate-400">
+                            <span className="rounded bg-stone-800 px-1.5 py-0.5 text-stone-400">
                               {fmtVal(entry.from)}
                             </span>
-                            <span className="text-slate-600">→</span>
-                            <span className="rounded bg-violet-500/15 px-1.5 py-0.5 text-violet-300">
+                            <span className="text-stone-600">→</span>
+                            <span className="rounded bg-blue-500/15 px-1.5 py-0.5 text-blue-300">
                               {fmtVal(entry.to)}
                             </span>
                           </div>
                         </div>
                       ) : (
-                        <div className="mt-0.5 text-sm text-slate-300">{entry.note ?? 'Assumptions updated'}</div>
+                        <div className="mt-0.5 text-sm text-stone-300">{entry.note ?? 'Assumptions updated'}</div>
                       )}
-                      {entry.user_id ? <div className="mt-1 text-xs text-slate-600">by {String(entry.user_id)}</div> : null}
+                      {entry.user_id ? <div className="mt-1 text-xs text-stone-600">by {String(entry.user_id)}</div> : null}
                     </li>
                   ))}
                 </ol>
