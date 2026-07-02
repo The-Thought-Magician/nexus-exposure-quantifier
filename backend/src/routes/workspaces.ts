@@ -13,16 +13,25 @@ import { authMiddleware, getUserId } from '../lib/auth.js'
 
 const router = new Hono()
 
+// Accepts undefined, null, or empty string as "not provided" — the create/edit
+// dialog shows these fields as optional (placeholder-only, not required), so
+// omitting them or sending "" / null must not fail validation.
+const optionalTrimmedString = z
+  .string()
+  .trim()
+  .nullish()
+  .transform((v) => (v === null || v === undefined || v === '' ? undefined : v))
+
 const workspaceCreateSchema = z.object({
   name: z.string().min(1),
-  legal_name: z.string().optional(),
-  fiscal_year_end: z.string().optional(),
+  legal_name: optionalTrimmedString,
+  fiscal_year_end: optionalTrimmedString,
 })
 
 const workspaceUpdateSchema = z.object({
   name: z.string().min(1).optional(),
-  legal_name: z.string().optional().nullable(),
-  fiscal_year_end: z.string().optional().nullable(),
+  legal_name: optionalTrimmedString,
+  fiscal_year_end: optionalTrimmedString,
 })
 
 const memberSchema = z.object({

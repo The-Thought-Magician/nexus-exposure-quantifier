@@ -16,10 +16,30 @@ async function req(path: string, init?: RequestInit) {
     }
   }
   if (!res.ok) {
-    const message = (data && (data.error || data.message)) || `Request failed (${res.status})`
-    throw new Error(message)
+    throw new Error(extractErrorMessage(data, res.status))
   }
   return data
+}
+
+// Server errors can arrive as a plain string, { error, details }, a
+// zod-validator failure ({ success: false, error: ZodError }), or nothing at
+// all. Always resolve to a readable string — never let an object reach
+// `new Error()`, which would otherwise coerce to the literal "[object Object]".
+function extractErrorMessage(data: any, status: number): string {
+  if (typeof data === 'string' && data.trim()) return data
+  if (data && typeof data === 'object') {
+    if (typeof data.error === 'string' && data.error.trim()) return data.error
+    if (typeof data.message === 'string' && data.message.trim()) return data.message
+    // @hono/zod-validator failure shape: { success: false, error: ZodError }
+    const issues = data.error?.issues ?? data.details
+    if (Array.isArray(issues) && issues.length) {
+      const first = issues[0]
+      const field = Array.isArray(first?.path) ? first.path.join('.') : undefined
+      const msg = first?.message || 'Invalid value'
+      return field ? `${field}: ${msg}` : msg
+    }
+  }
+  return `Request failed (${status})`
 }
 
 const get = (path: string) => req(path)
